@@ -6,7 +6,7 @@ import { styled } from 'styled-components';
 function Dropdown({ labelCenter, label, list }) {
     const [dropDownActive, setDropDownActive] = useState(false)
     const [selectedItem, setSelectedItem] = useState({})
-    console.log(list, "list")
+
     const selectItem = (item) => {
         setSelectedItem(item)
         setDropDownActive(false)

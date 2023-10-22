@@ -9,8 +9,6 @@ function AboutPage() {
   const location = useLocation()
   const type = new URLSearchParams(location.search).get("type")
 
-  console.log(location, "location", type)
-
   const goToSignupPage = () => {
     navigate("/signup")
   }

@@ -24,7 +24,6 @@ function FileUploader({ label, labelCenter, selectFile, disabled, ...rest }) {
         selectFile("")
     }
 
-    console.log(fileSelected, "fileSelected")
     return (
         <Styles>
              <p className={`text-lg label ${labelCenter ? "text-center w-full" : ""}`}>{label}</p>
