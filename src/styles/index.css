@@ -1,0 +1,110 @@
+@import url("fonts.css");
+
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+
+
+html,
+body {
+    padding: 0;
+    margin: 0;
+    /*font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;*/
+    font-smooth: antialiased;
+    font-stretch: 100%;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: auto;
+    -ms-overflow-style: none;
+    /*font-size: 16px;*/
+    color: #ffffff;
+    scroll-behavior: smooth;
+    -webkit-tap-highlight-color: transparent;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+* {
+    box-sizing: border-box;
+    outline: none;
+}
+
+::-webkit-scrollbar {
+    display: none;
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button,
+button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+select:invalid {
+    color: rgb(156, 163, 175);
+}
+
+
+.h-scroll-container {
+    scroll-snap-type: x mandatory;
+}
+
+.h-scroll-element {
+    scroll-snap-align: start;
+}
+
+.absolute-centering {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.embla {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    min-height: 8px;
+}
+
+.embla__viewport {
+    overflow-x: hidden;
+    position: absolute;
+    width: 90%;
+    margin: auto
+}
+.embla__slide {
+    flex: 0 0 208px; /* Slide covers 200px of the viewport */
+    min-width: 0;
+  }
+
+.embla__prev {
+    position: absolute;
+    left:0px;
+}
+
+.embla__next {
+    position: absolute;
+    right:0px;
+}
+.embla__container {
+    grid-column-gap: 50px;
+  }
+
+@media only screen and (min-width: 768px) {
+    .rotated-text {
+        writing-mode: tb-rl;
+        transform: rotate(-180deg);
+    }
+
+    .absolute-centering {
+        left: 61%;
+        top: 4rem;
+        transform: translate(0%);
+    }
+}
