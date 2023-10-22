@@ -3,14 +3,11 @@ export default {
   content: ["./src/**/*.{js,ts,jsx,tsx,html}", "./index.html"],
   theme: {
     fontFamily: {
-      lota: ["Lota"],
-      poppins: ["Poppins"]
+     
     },
     extend: {
       colors: {
-        darkGreen: "#203035",
-        green: "#02CB63",
-        darkGrey: "#32454C"
+        blue: "#E0EEF8",
       },
       screens: {
         "2xl": '2220px',

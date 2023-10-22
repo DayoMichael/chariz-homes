@@ -19,7 +19,7 @@ body {
     -moz-osx-font-smoothing: auto;
     -ms-overflow-style: none;
     /*font-size: 16px;*/
-    color: #ffffff;
+    color: #000000;
     scroll-behavior: smooth;
     -webkit-tap-highlight-color: transparent;
 }

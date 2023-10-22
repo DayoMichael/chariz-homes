@@ -2,11 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { styled } from 'styled-components';
 
-function InputField({ label, placeholder, value, onChange, labelCenter, ...rest }) {
+function InputField({ label, placeholder, value, onChange, labelCenter, labelClassname, ...rest }) {
     return (
         <Styles>
-            <div className='mt-6 w-full'>
-                <p className={`text-lg label ${labelCenter ? "text-center w-full" : ""}`}>{label}</p>
+            <div className='mt-4 w-full'>
+                <p className={`text-lg label ${labelClassname} ${labelCenter ? "text-center w-full" : ""}`}>{label}</p>
                 <input
                     className='input-field mt-2 w-full text-left'
                     placeholder={placeholder}
@@ -24,9 +24,9 @@ export default InputField
 const Styles = styled.div`
     width: 100%;
     .input-field{
-        border-radius: 4px;
-        border: 1px solid #32454C;
-        background: #0E1A20;
+        border-radius: 8px;
+        border: 1px solid #D9D9D9;
+        background: #ffffff;
         padding: 16px;
         font-size: 18px;
         font-style: normal;
@@ -34,10 +34,10 @@ const Styles = styled.div`
         line-height: 20px;
     }
     .label {
-        color: #B3B3B3;
-        font-size: 16px;
+        color: #000000;
+        font-size: 14px;
         font-style: normal;
-        font-weight: 400;
+        font-weight: 600;
     }
 
 `
@@ -48,4 +48,5 @@ InputField.propTypes = {
     value: PropTypes?.string,
     onChange: PropTypes?.func?.isRequired,
     labelCenter: PropTypes?.bool,
+    labelClassname: PropTypes?.string,
 };

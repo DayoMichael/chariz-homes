@@ -1,12 +1,12 @@
 import Cookies from "js-cookie";
 
 export const deleteToken = () => {
-    Cookies.remove("MezoAdminToken");
-    Cookies.remove("MezoAdminSessionInfo");
+    Cookies.remove("HorizonAdminToken");
+    Cookies.remove("HorizonAdminSessionInfo");
 }
 
 export const getToken = () => {
-	let token = Cookies.get("MezoAdminToken");
+	let token = Cookies.get("HorizonAdminToken");
 	if (token && !isSessionActive()) {
 		return token
 	}
@@ -14,16 +14,16 @@ export const getToken = () => {
 };
 
 export const getSessionInfo = () => {
-	let MezoAdminSessionInfo = Cookies.get("MezoAdminSessionInfo");
-	if (MezoAdminSessionInfo) {
-		const appData = JSON.parse(MezoAdminSessionInfo);
+	let HorizonAdminSessionInfo = Cookies.get("HorizonAdminSessionInfo");
+	if (HorizonAdminSessionInfo) {
+		const appData = JSON.parse(HorizonAdminSessionInfo);
 		return appData
 	}
 	return null;
 };
 
 export const isSessionActive = () => {
-	const expire = Cookies.get("MezoAdminToken");
+	const expire = Cookies.get("HorizonAdminToken");
 	if (!expire) {
 		return true;
 	} else {

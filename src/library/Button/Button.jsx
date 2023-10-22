@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 
 function Button({ type, text, className, onClick, loading, disabled }) {
   return (
-    <button className={`${type === "inverted" ? " bg-[#203035] text-green rounded-tr-2xl rounded-bl-2xl " : "bg-green text-black  rounded-tl-2xl rounded-br-2xl "} ${className} w-full  flex align-center justify-center py-4 cursor-pointer text-lg font-bold ${loading  || disabled ? "opacity-25" : ""}`} onClick={onClick}>
+    <button className={`${type === "inverted" ? " bg-[#000000] text-green rounded-lg " : "bg-[#000000] text-[#ffffff]  rounded-lg "} ${className} w-full  flex align-center justify-center py-4 cursor-pointer text-lg font-bold ${loading  || disabled ? "opacity-25" : ""}`} onClick={onClick}>
       {loading ? "Loading..." : text}
     </button>
   )
