@@ -35,7 +35,7 @@ function PersonalInvestor() {
 
     if (success) {
         return (
-            <div className='flex flex-col items-center'>
+            <div className='flex flex-col items-center mt-10 lg:mt-0'>
                 <img src={SuccessIcon} className="w-[100px] h-[100px]" />
                 <p className='text-base mt-6 font-bold text-center'>Registration Complete</p>
                 <p className='text-sm text-[#7A7878] text-center mt-2'>A verification email has been sent. Please check your inbox or spam</p>
