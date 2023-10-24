@@ -87,7 +87,7 @@ function PersonalInvestor() {
                 />
             </div>
 
-            <div className='mt-5'>
+            <div className='mt-5 mb-10'>
                 <p className='text-center text-[#7A7878] text-base mt-2 font-medium'> Already have an account? <span className='font-bold cursor-pointer' onClick={goToSigninPage}>Sign In</span></p>
 
             </div>
