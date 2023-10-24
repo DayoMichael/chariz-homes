@@ -50,7 +50,7 @@ function PersonalInvestor() {
         )
     }
     return (
-        <div className='flex flex-col w-full overflow-x-scroll'>
+        <div className='flex flex-col w-full overflow-x-scroll lg:mt-[100px]'>
             <img src={ArrowIcon} className="w-[24px] h-[24px] cursor-pointer" onClick={goToSignupPage}/>
             <p className='mt-4'>Provide more details to create your account</p>
             <div className='w-full flex gap-2'>

@@ -50,7 +50,7 @@ function InstitutionalInvestor() {
         )
     }
     return (
-        <div className=' flex flex-col w-full overflow-x-scroll justify-center items-center'>
+        <div className=' flex flex-col w-full overflow-x-scroll justify-center items-center lg:mt-[200px]'>
             <div className='flex flex-col w-full'>
             <img src={ArrowIcon} className="w-[24px] h-[24px] cursor-pointer" onClick={goToSignupPage}/>
             <p className='mt-4'>Provide more details to create your account</p>
