@@ -10,6 +10,10 @@ function SigninPage() {
   const goToSignupPage = () => {
     navigate("/signup")
   }
+
+  const goToResetPage = () => {
+    navigate("/reset")
+  }
   return (
     <OnboardingLayout>
       <div className='flex flex-col h-full justify-center w-full mt-4'>
@@ -28,7 +32,7 @@ function SigninPage() {
           <Button
             text='Login'
           />
-          <p className='text-right text-[#7A7878] text-sm mt-2 font-medium cursor-pointer'>Forgot password?</p>
+          <p className='text-right text-[#7A7878] text-sm mt-2 font-medium cursor-pointer' onClick={goToResetPage}>Forgot password?</p>
         </div>
 
         <div className='mt-10'>

@@ -2,18 +2,24 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { styled } from 'styled-components';
 
-function InputField({ label, placeholder, value, onChange, labelCenter, labelClassname, ...rest }) {
+
+function InputField({ label, placeholder, value, onChange, labelCenter, labelClassname, showIcon, icon, ...rest }) {
     return (
         <Styles>
             <div className='mt-4 w-full'>
                 <p className={`text-lg label ${labelClassname} ${labelCenter ? "text-center w-full" : ""}`}>{label}</p>
-                <input
-                    className='input-field mt-2 w-full text-left'
-                    placeholder={placeholder}
-                    value={value}
-                    onChange={onChange}
-                    {...rest}
-                />
+                <div className='flex w-full justify-between input-field'>
+                    <input
+                        className=' mt-2 w-full text-left'
+                        placeholder={placeholder}
+                        value={value}
+                        onChange={onChange}
+                        {...rest}
+                    />
+                    {showIcon && <img src={icon} />}
+
+                </div>
+
             </div>
         </Styles>
     )
@@ -49,4 +55,6 @@ InputField.propTypes = {
     onChange: PropTypes?.func?.isRequired,
     labelCenter: PropTypes?.bool,
     labelClassname: PropTypes?.string,
+    showIcon: PropTypes?.bool,
+    icon: PropTypes?.any
 };
