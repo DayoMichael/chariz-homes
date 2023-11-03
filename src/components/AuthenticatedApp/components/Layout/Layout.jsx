@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import Cookies from "js-cookie"
 import PropTypes from "prop-types";
 import { LayoutStyles } from './LayoutStyles';
 import HorizonLogo from '../../../../assets/icons/horizon-blue-logo.svg';
@@ -20,6 +21,8 @@ function Layout({ children }) {
   const [activeTab, setActiveTab] = useState("");
 
   const logout = () => {
+    Cookies.remove("HorizonAdminToken")
+    navigate("/")
 
   }
 
@@ -106,7 +109,7 @@ function Layout({ children }) {
               const active = pathname !== "/dashboard" ? pathname.includes(item.key) : item.route === pathname
                console.log(pathname.includes(item.key), pathname, item.key)
               return (
-                <div onClick={() => routeTo(item?.route)} key={index} className={`py-4 px-6 flex items-center cursor-pointer rounded rounded-tl-none rounded-bl-none ${active ? "active-tab" : ""}`}>
+                <div onClick={item.onClick ? () => item.onClick() : () => routeTo(item?.route) } key={index} className={`py-4 px-6 flex items-center cursor-pointer rounded rounded-tl-none rounded-bl-none ${active ? "active-tab" : ""}`}>
                   <img src={active ? item.activeIcon : item.icon} className="mr-2" />
                   <p className='text-base font-semibold'>{item.name}</p>
                 </div>
