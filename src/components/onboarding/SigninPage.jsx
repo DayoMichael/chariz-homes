@@ -1,4 +1,5 @@
 import React from 'react';
+import Cookies from "js-cookie";
 import OnboardingLayout from '../../library/OnboardingLayout/OnboardingLayout';
 import InputField from '../../library/InputField/InputField';
 import Button from '../../library/Button/Button';
@@ -13,6 +14,11 @@ function SigninPage() {
 
   const goToResetPage = () => {
     navigate("/reset")
+  }
+
+  const loginUser = () => {
+    Cookies.set("HorizonAdminToken", "hi")
+    navigate("/dashboard")
   }
   return (
     <OnboardingLayout>
@@ -31,6 +37,7 @@ function SigninPage() {
         <div className='mt-6'>
           <Button
             text='Login'
+            onClick={loginUser}
           />
           <p className='text-right text-[#7A7878] text-sm mt-2 font-medium cursor-pointer' onClick={goToResetPage}>Forgot password?</p>
         </div>
