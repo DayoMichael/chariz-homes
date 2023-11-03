@@ -11,17 +11,18 @@ export const ModalStyles = styled.div`
   width: 100%; /* Full width */
   height: 100%; /* Full height */
   overflow: auto; /* Enable scroll if needed */
-  background-color: rgb(0,0,0); /* Fallback color */
-  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  background-color: rgba(14, 23, 46, 0.50); /* Fallback color */
+  background-color: rgba(14, 23, 46, 0.50); /* Black w/ opacity */
 }
 
 /* Modal Content */
 .modal-content {
-  background-color: #32454C;
+  background-color: #ffff;
   margin: auto;
-  padding: 20px;
-  border: 1px solid #32454C;
-  width: 80%;
+  border: 1px solid #D9D9D9;
+  width: 544px;
+  max-width: 96%;
+  border-radius: 8px;
 }
 
 /* The Close Button */

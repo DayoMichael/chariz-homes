@@ -1,7 +1,8 @@
 import React from 'react';
+import PropTypes from "prop-types"
 import { styled } from 'styled-components';
 
-function LPOTable() {
+function LPOTable({onClick}) {
     return (
         <Styled className='w-full border-[#D9D9D9] overflow-x-scroll px-2'>
             <div className='w-full flex px-4 border-[#D9D9D9] border-y py-2 gap-4 min-w-[1397px]'>
@@ -34,7 +35,7 @@ function LPOTable() {
                 </div>
 
             </div>
-            <div className='w-full flex px-4 border-[#D9D9D9] border-b py-6 gap-4 min-w-[1397px] details cursor-pointer hover:bg-[#F3F5F7]'>
+            <div className='w-full flex px-4 border-[#D9D9D9] border-b py-6 gap-4 min-w-[1397px] details cursor-pointer hover:bg-[#F3F5F7]' onClick={onClick}>
                 <div className='w-[20px]  justify-end flex'>
                     1
                 </div>
@@ -117,3 +118,7 @@ const Styled = styled.div`
         line-height: normal;
     }
 `
+
+LPOTable.propTypes = {
+    onClick: PropTypes?.func
+};

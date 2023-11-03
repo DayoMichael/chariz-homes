@@ -25,7 +25,7 @@ function ResetPassword() {
         setSuccess(true)
     }
 
-    
+
     return (
         <OnboardingLayout>
             {step === 1 &&
@@ -86,19 +86,19 @@ function ResetPassword() {
 
                 </div>
             }
-            {success && 
-             <div className='flex flex-col items-center mt-10 lg:mt-0'>
-             <img src={SuccessIcon} className="w-[100px] h-[100px]" />
-             <p className='text-base mt-6 font-bold text-center'>Password reset successful</p>
-             <p className='text-sm text-[#7A7878] text-center mt-2'>Your password has been reset successfully. You can now login.</p>
-             <div className='mt-10 w-full'>
-             <Button
-                 text={"Go to Login"}
-                 onClick={goToSigninPage}
-             />
-             </div>
+            {success &&
+                <div className='flex flex-col items-center mt-10 lg:mt-0'>
+                    <img src={SuccessIcon} className="w-[100px] h-[100px]" />
+                    <p className='text-base mt-6 font-bold text-center'>Password reset successful</p>
+                    <p className='text-sm text-[#7A7878] text-center mt-2'>Your password has been reset successfully. You can now login.</p>
+                    <div className='mt-10 w-full'>
+                        <Button
+                            text={"Go to Login"}
+                            onClick={goToSigninPage}
+                        />
+                    </div>
 
-         </div>
+                </div>
             }
         </OnboardingLayout>
     )

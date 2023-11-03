@@ -17,8 +17,10 @@ import GridViewActiveIcon from '../../../../assets/icons/grid-view-active-icon.s
 import ListViewActiveIcon from '../../../../assets/icons/list-view-active-icon.svg';
 
 import Button from '../../../../library/Button/Button';
+import { useNavigate } from 'react-router-dom';
 
 function LPOs() {
+    const navigate = useNavigate()
     const [itemsPerPage, setItemsPerPage] = useState(100);
     const [showPerPageDropdown, setShowPerPageDropdown] = useState(false);
     const [view, setView] = useState("list");
@@ -45,6 +47,10 @@ function LPOs() {
     const selectPerPageDowdown = (item) => {
         setItemsPerPage(item)
         setShowPerPageDropdown(false)
+    }
+
+    const goToLPODetailsPage = () => {
+        navigate("/dashboard/lpos-details")
     }
     return (
         <Styled>
@@ -116,6 +122,7 @@ function LPOs() {
                             {view === "list" &&
                                 <div className='w-full mt-4'>
                                     <LPOTable
+                                        onClick={goToLPODetailsPage}
                                     />
                                 </div>
                             }
@@ -166,6 +173,7 @@ function LPOs() {
                                                 text={"Invest"}
                                                 type="inverted"
                                                 className={"border border-[#000] !p-3"}
+                                                onClick={goToLPODetailsPage}
                                             />
                                         </div>
                                     </div>
@@ -214,6 +222,7 @@ function LPOs() {
                                                 text={"Invest"}
                                                 type="inverted"
                                                 className={"border border-[#000] !p-3"}
+                                                onClick={goToLPODetailsPage}
                                             />
                                         </div>
                                     </div>
@@ -262,6 +271,7 @@ function LPOs() {
                                                 text={"Invest"}
                                                 type="inverted"
                                                 className={"border border-[#000] !p-3"}
+                                                onClick={goToLPODetailsPage}
                                             />
                                         </div>
                                     </div>
