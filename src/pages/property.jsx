@@ -1,7 +1,7 @@
 import React from 'react';
 import HeroPage from '../components/PropertyType/HeroPage';
 import AppLayout from '../layout/AppLayout';
-import WelcomeSection from '../components/PropertyType/WElcomePage';
+import WelcomeSection from '../components/PropertyType/WelcomePage';
 import Image from "../assets/la-images/home-page.svg";
 import { useNavigate } from 'react-router-dom';
 import ExploreApartments from '../components/PropertyType/ExploreApartments';
