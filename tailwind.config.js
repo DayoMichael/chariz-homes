@@ -20,6 +20,7 @@ export default {
         'missionImage': 'url(../src/assets/la-images/our-mission-image.svg)',
         'visionImage': 'url(../src/assets/la-images/our-vision-image.svg)',
         'justForYou': 'url(../src/assets/la-images/just-for-you-image.svg)',
+        "propertyView": 'url(../src/assets/la-images/property-view.svg)',
       }
     },
     letterSpacing: {
