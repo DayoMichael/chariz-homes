@@ -6,7 +6,7 @@ function AppLayout({ children }) {
     const location = useLocation();
     const navLinks = [
         { name: 'Home', link: '/' },
-        { name: 'Property Management', link: '/properties' },
+        { name: 'Properties', link: '/properties' },
         { name: 'About Us', link: '/about' },
         { name: 'Contact Us', link: '/contact' },
         { name: 'Our App', link: '/app' }
