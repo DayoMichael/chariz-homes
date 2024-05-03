@@ -1,14 +1,22 @@
 import React from 'react';
+import HeroPage from '../components/PropertyType/HeroPage';
+import AppLayout from '../layout/AppLayout';
+import WelcomeSection from '../components/PropertyType/WElcomePage';
+import Image from "../assets/la-images/home-page.svg";
 import { useNavigate } from 'react-router-dom';
-import Image from "../assets/la-images/property-type-page.svg";
+import ExploreApartments from '../components/PropertyType/ExploreApartments';
+import OurServices from '../components/PropertyType/OurServices';
+import WhyChooseUs from '../components/PropertyType/WhyChooseUs';
 
 function PropertyPage() {
     const navigate = useNavigate()
-    const goHome = () => navigate("/")
+    const goHome = () => navigate("/properties")
     return (
-        <div onClick={goHome} className="cursor-pointer">
-            <img src={Image} />
-        </div>
+        <AppLayout>
+            <HeroPage />
+            <WelcomeSection />
+            <OurServices />
+        </AppLayout>
     )
 }
 

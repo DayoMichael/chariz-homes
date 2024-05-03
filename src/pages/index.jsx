@@ -12,9 +12,6 @@ function HomePage() {
     const navigate = useNavigate()
     const goHome = () => navigate("/properties")
     return (
-        // <div onClick={goHome} className="cursor-pointer w-full">
-        //     <img src={Image} />
-        // </div>
         <AppLayout>
             <HeroPage />
             <WelcomeSection />

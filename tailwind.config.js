@@ -19,6 +19,7 @@ export default {
         'joinImage': 'url(../src/assets/images/join-background-imagee.png)',
         'missionImage': 'url(../src/assets/la-images/our-mission-image.svg)',
         'visionImage': 'url(../src/assets/la-images/our-vision-image.svg)',
+        'justForYou': 'url(../src/assets/la-images/just-for-you-image.svg)',
       }
     },
     letterSpacing: {
