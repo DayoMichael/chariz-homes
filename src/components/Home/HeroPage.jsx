@@ -23,7 +23,7 @@ function HeroPage() {
     ]
     return (
         <div style={{
-            backgroundImage: `url(./src/assets/la-images/hero-bg-image.svg)`,
+            backgroundImage: `url(https://res.cloudinary.com/dayomichael/image/upload/v1714809968/nick-wessaert-JI01fn0U7Cg-unsplash_2_pu53zr.png)`,
             backgroundSize: 'cover',
             backgroundPosition: 'center',
             minHeight: '100vh'
