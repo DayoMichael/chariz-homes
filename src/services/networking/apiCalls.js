@@ -30,7 +30,7 @@ export const getCall = async (url, params) => {
         ...params,
     };
     const response = await axiosInstance.get(url, config);
-    return response?.data || response
+    return response
 };
 
 export const deleteCall = async (url, data) => {

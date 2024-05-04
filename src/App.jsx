@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import HomePage from "./pages";
 import PropertyPage from "./pages/property";
 import PropertyView from "./pages/propertyView";
+import PropertyListView from "./pages/PropertyListView";
 
 function App() {
 
@@ -10,7 +11,7 @@ function App() {
     <Router>
       <Routes>
         <Route exact path="/" element={<HomePage />}/>
-        <Route path="/properties" element={<PropertyPage />} />
+        <Route path="/properties" element={<PropertyListView />} />
         <Route path="/property-view" element={<PropertyView />} />
       </Routes>
     </Router>

@@ -1,7 +1,7 @@
 import * as types from "./types";
-import { createAccountUrl, LoginUrl } from "./api";
+import { createAccountUrl, LoginUrl, propertiesListingUrl } from "./api";
 import { genericFailure, handleFailure, handleSuccess } from "../../../services/constants";
-import { postCall } from "../../../services/networking/apiCalls";
+import { getCall, postCall } from "../../../services/networking/apiCalls";
 
 export const loginUser = (requestData) => async (dispatch) => {
 	try {
@@ -63,3 +63,31 @@ export const createUserAccount = (requestData) => async (dispatch) => {
 		};
 	}
 };
+
+export const getPropertiesListing = () => async (dispatch) => {
+	try {
+		dispatch({ type: types.FETCH_LISTINGS_STARTED });
+		const response = await getCall(propertiesListingUrl);
+		const { status, data } = response || {}
+		const showFailureToast = false;
+		if(status  === 200){
+            dispatch({ type: types.FETCH_LISTINGS_SUCCESS, payload: data?.listings});
+            return handleSuccess(data, "Listings fetched successfully", showFailureToast)
+        }
+        handleFailure(data?.message, showFailureToast);
+	} catch (error) {
+		const { data } = error?.response;
+		dispatch({ type: types.FETCH_LISTINGS_FAILED });
+		if (data?.data?.message) {
+			handleFailure(data?.data?.message, true);
+		} else {
+			genericFailure();
+		}
+
+		return {
+			status: false,
+			data: data,
+		};
+	}
+};
+

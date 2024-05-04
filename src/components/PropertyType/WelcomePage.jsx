@@ -41,7 +41,7 @@ function WelcomeSection() {
     return (
         <div className='flex flex-col w-full min-h-screen bg-[#ECECEC]'>
             <div className='w-full h-full flex flex-col justify-center pb-20 max-w-[90%] m-auto gap-20'>
-                <div className='w-full max-w-[1377px] bg-justForYou p-10 flex flex-col gap-4 bg-cover justify-center min-h-[263px] rounded-xl'>
+                <div className='w-full m-auto max-w-[1377px] bg-justForYou p-10 flex flex-col gap-4 bg-cover justify-center min-h-[263px] rounded-xl'>
                     <p className='text-2xl font-bold text-[#fff] text-center'>Just for you</p>
                     <p className='text-xl text-[#fff] text-center max-w-[900px] m-auto'>Planning a trip somewhere? Whether it’s personal, family, leisure or corporate; Grab exclusive travel offers tailored to your specific needs with Chariz Travels</p>
                     <button className='bg-[#F29254] px-16 py-2 rounded-3xl text-[#fff] text-center font-semibold flex text-md font-bold items-center cursor-pointer w-fit m-auto'>Find Travel Deals</button>

@@ -1,7 +1,7 @@
 import axios from "axios";
 import { deleteToken } from "../../utils/appConfig";
 
-const baseURL = "https://phplaravel-440963-3389902.cloudwaysapps.com/api";
+const baseURL = "https://coffee-viper-hose.cyclic.app/";
 
 const axiosInstance = axios.create({
 	baseURL: baseURL,
