@@ -22,7 +22,12 @@ function HeroPage() {
         }
     ]
     return (
-        <div className='flex w-full h-screen  bg-heroImage bg-cover  flex-col '>
+        <div style={{
+            backgroundImage: `url(./src/assets/la-images/hero-bg-image.svg)`,
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            minHeight: '100vh'
+        }} className='flex w-full h-screen  bg-heroImage bg-cover  flex-col '>
             <div className='w-full flex flex-col items-center justify-center items-center gap-10 md:max-w-[1235px] m-auto'>
                 <h4 className='text-5xl font-semibold max-w-[775px] text-center leading-tight mt-28'>
                     Your Home for Luxury Short Stays and More
@@ -32,10 +37,10 @@ function HeroPage() {
 
                 <div className='p-6 border border-[#F29254] w-full mt-28 rounded-full flex gap-8 justify-center'>
                     {features.map((item, index) => (
-                        <button 
+                        <button
                             onClick={() => setSelectedFeat(item?.name)}
                             key={item?.id}
-                            className= {` px-6 py-2 rounded-3xl text-center font-semibold flex text-lg font-bold items-center min-w-[200px] justify-center text-center border border-[#F29254] ${selectedFeat === item?.name ? "bg-[#F29254] text-[#fff]" : "bg-[#fff] text-[#F29254]"}`}
+                            className={` px-6 py-2 rounded-3xl text-center font-semibold flex text-lg font-bold items-center min-w-[200px] justify-center text-center border border-[#F29254] ${selectedFeat === item?.name ? "bg-[#F29254] text-[#fff]" : "bg-[#fff] text-[#F29254]"}`}
                         >{item?.name}</button>))}
                 </div>
             </div>
