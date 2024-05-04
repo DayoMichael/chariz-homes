@@ -16,6 +16,7 @@ function PropertyPage() {
             <HeroPage />
             <WelcomeSection />
             <OurServices />
+            <Footer/>
         </AppLayout>
     )
 }

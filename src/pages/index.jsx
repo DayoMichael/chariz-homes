@@ -7,6 +7,7 @@ import { useNavigate } from 'react-router-dom';
 import ExploreApartments from '../components/Home/ExploreApartments';
 import OurServices from '../components/Home/OurServices';
 import WhyChooseUs from '../components/Home/WhyChooseUs';
+import Footer from '../components/Footer';
 
 function HomePage() {
     const navigate = useNavigate()
@@ -18,7 +19,7 @@ function HomePage() {
             <ExploreApartments />
             <OurServices />
             <WhyChooseUs />
-
+            <Footer />
         </AppLayout>
     )
 }
