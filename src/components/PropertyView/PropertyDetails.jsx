@@ -6,7 +6,7 @@ import StarRatings from "../../assets/la-images/star-ratings.svg";
 import RatingsImage from "../../assets/la-images/ratings-image.svg";
 import ReviewProfileImage from "../../assets/la-images/review-profile-image.svg";
 
-function PropertyDetails() {
+function PropertyDetails({details}) {
   const [selectedFeat, setSelectedFeat] = useState("Homes")
     const features = [
         {
@@ -27,12 +27,10 @@ function PropertyDetails() {
         }
     ]
   const images = [
-    HomeImage,
-    HomeImage,
-    HomeImage,
-    HomeImage,
-    HomeImage,
-    HomeImage,
+    details?.imageSrc,
+    details?.imageSrcTwo,
+    details?.imageSrcThree,
+    details?.imageSrcFour,
   ];
 
   const Categories = [
@@ -58,11 +56,11 @@ function PropertyDetails() {
     <div className='bg-[#ECECEC]'>
       <div className='flex flex-col w-full max-w-[90%] m-auto py-20'>
         <div className='w-full flex justify-between'>
-          <h4 className='text-4xl font-bold'>Birdy Chip Apartments, Garki</h4>
-          <h4 className='text-4xl font-bold text-[#F29254]'>N250K</h4>
+          <h4 className='text-4xl font-bold'>{details?.title}</h4>
+          <h4 className='text-4xl font-bold text-[#F29254]'>N{details?.price}K</h4>
         </div>
         <div className='w-full flex justify-between mt-4'>
-          <p className='text-sm font-bold text-[#000] flex gap-2 justify-center items-center'><img src={LocationIcon} /> Plot 217, Behind First Bank, Garki, Abuja. <span className='text-[#F29254]'>Show on map</span> </p>
+          <p className='text-sm font-bold text-[#000] flex gap-2 justify-center items-center'><img src={LocationIcon} /> Nigeria<span className='text-[#F29254]'>Show on map</span> </p>
           <button className=' bg-[#F29254] px-10 py-2 rounded-3xl text-[#fff] text-center font-semibold flex text-xl font-bold'>Check Availability</button>
         </div>
 
@@ -85,18 +83,15 @@ function PropertyDetails() {
         <div className='mt-20 w-full flex justify-between'>
           <div className='w-3/5'>
             <div className='w-full flex flex-col w-full'>
-              <p className='mb-2'>Birdy Chip Apartments is a minimalistic luxurious apartment in the heart of Garki, Abuja. Built in a 420 Sqm indoor and outdoor space with magnificent ocean vistas. Birdy Chip Apartments is a minimalistic luxurious apartment in the heart of Garki, Abuja. </p>
+              <p className='mb-2'>{details?.description} </p>
               <br />
-              <p className='mb-2'>Built in a 420 Sqm indoor and outdoor space with magnificent ocean vistas. Birdy Chip Apartments is a minimalistic luxurious apartment in the heart of Garki, Abuja. Built in a 420 Sqm indoor and outdoor space with magnificent ocean vistas.</p>
-              <br />
-              <p className='mb-2'>Birdy Chip Apartments is a minimalistic luxurious apartment in the heart of Garki, Abuja. Built in a 420 Sqm indoor and outdoor space with magnificent ocean vistas.</p>
             </div>
             <button className=' bg-[#F29254] px-10 py-2 rounded-3xl text-[#fff] text-center font-semibold flex text-xl font-bold items-center cursor-pointer mt-6'>Check Availability</button>
           </div>
           <div className='w-1/5 h-full'>
-            <div className='w-full h-[306px] rounded-2xl bg-[#fff] p-8 flex flex-col gap-4'>
+            <div className='w-full rounded-2xl bg-[#fff] p-8 flex flex-col gap-4'>
               <h2 className='font-semibold text-xl'>Ratings</h2>
-              <div className='w-full flex gap-6 mb-4 justify-between'>
+              <div className='w-full flex gap-6 mb-4 justify-between mt-10'>
                 <div className='flex gap-4 flex-col'>
                   <h2 className='text-6xl font-bold text-[#F29254]'>4.5</h2>
                   <img className="max-w-[60px]" src={StarRatings} />

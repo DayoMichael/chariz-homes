@@ -12,6 +12,7 @@ import { useEffect } from 'react';
 import { getPropertiesListing } from '../../redux/features/auth/actions';
 import { useDispatch } from 'react-redux';
 import Loader from '../../library/Loader/Loader';
+import { useNavigate } from 'react-router-dom';
 
 const CheckboxComponent = ({ name, count }) => {
     const [checked, setChecked] = useState(false);
@@ -37,6 +38,7 @@ const CheckboxComponent = ({ name, count }) => {
 };
 
 function PropertyList() {
+    const navigate = useNavigate()
     const dispatch = useDispatch();
     const [value, setValue] = useState([0, 1000000]);
     const [loading, setLoading] = useState(false)
@@ -91,6 +93,10 @@ function PropertyList() {
         { id: 4, image: ApartmentImage, name: 'Birdy Chip Apartments', price: 'N250k/Night' },
     ];
 
+    const goToDetailsPage = (id) => {
+        navigate(`/property-view?id=${id}`)
+    }
+
     const fetchAllListings = async() => {
         setLoading(true)
         const {status, data} =  await dispatch(getPropertiesListing())
@@ -121,7 +127,7 @@ function PropertyList() {
                             <img src={DropDownArrow} />
                         </div>
                     </div>
-                    <div className='h-screen grid  grid-cols-2 md:grid-cols-4 gap-10 mt-10 overflow-y-scroll py-10'>
+                    <div className='h-full grid  grid-cols-2 md:grid-cols-4 gap-10 mt-10 py-10'>
                         <div className='h-full col-span-1 bg-[#fff] rounded-2xl w-full p-6'>
                             <h2 className='text-[#F29254] text-2xl font-bold pb-4 border-b border-[#000]'>Filter by</h2>
                             <div className='border-b border-[#000] py-4'>
@@ -169,11 +175,14 @@ function PropertyList() {
                                         <img src={card.imageSrc} alt={card.title} className="w-full h-[205px] object-cover rounded-t-lg" />
                                         <div className="py-4 px-2">
                                             <h2 className="font-bold text-xl mb-2">{card.title}</h2>
-                                            <h2 className="font-bold text-xl text-[#F29254] mb-1">N250k/Night</h2>
+                                            <h2 className="font-bold text-xl text-[#F29254] mb-1">N{card?.price}k/Night</h2>
                                             <p className='text-xs flex gap-2 mb-2'> 4 Reviews <img src={StarRatings} /></p>
                                             <p className='text-xs flex gap-1'><img src={LocationIcons} /> Nigeria</p>
                                             <div className='mt-4'>
-                                            <button className='bg-[#F29254] px-16 py-2 rounded-3xl text-[#fff] text-center font-semibold flex text-md font-bold items-center cursor-pointer w-full justify-center'>Check Availability</button>
+                                            <button 
+                                                onClick={() => goToDetailsPage(card?.id)}
+                                                className='bg-[#F29254] px-16 py-2 rounded-3xl text-[#fff] text-center font-semibold flex text-md font-bold items-center cursor-pointer w-full justify-center'
+                                            >Check Availability</button>
                                             </div>
                                         </div>
                                     </div>
