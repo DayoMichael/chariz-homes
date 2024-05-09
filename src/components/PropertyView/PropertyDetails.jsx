@@ -68,7 +68,7 @@ function PropertyDetails({details}) {
           <div className="grid-container inline-grid grid-cols-2 md:grid-cols-3  lg:grid-cols-6 gap-10 p-4 w-full">
             {images.map((imageUrl, index) => (
               <div key={index} className="grid-item w-full h-52 rounded-2xl overflow-hidden">
-                <img src={imageUrl} alt={`Image ${index + 1}`} className="object-cover w-full h-full" />
+                {imageUrl && <img src={imageUrl} alt={`Image ${index + 1}`} className="object-cover w-full h-full" />}
               </div>
             ))}
           </div>
@@ -105,7 +105,7 @@ function PropertyDetails({details}) {
         </div>
         <div className='w-full mt-20'>
           <div className='w-full flex justify-between items-center'>
-            <h2 className='text-xl'>Great Reviews</h2>
+            <h2 className='text-xl'>Guest Reviews</h2>
             <button className='floating-button bg-[#F29254] px-10 py-2 rounded-3xl text-[#fff] text-center font-semibold flex text-xl font-bold'>Read all reviews</button>
           </div>
 
@@ -125,7 +125,7 @@ function PropertyDetails({details}) {
           </div>
         </div>
         <div className='w-full mt-20'>
-          <h2 className='font-bold text-xl mb-4'>Reviews</h2>
+          <h2 className='font-bold text-xl mb-4'>Rules and Policy</h2>
           <div className='p-6 rounded-2xl bg-[#fff]'>
             <ul className="list-decimal mt-4 space-y-4 ml-6">
               <li className="text-lg">Birdy Chip Apartments is a minimalistic luxurious apartment in the heart of Garki, Abuja. Birdy Chip Apartments is a minimalistic luxurious apartment in the heart of Garki, Abuja.</li>

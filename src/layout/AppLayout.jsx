@@ -9,10 +9,12 @@ function AppLayout({ children }) {
         { name: 'Properties', link: '/properties' },
         { name: 'About Us', link: '/about' },
         { name: 'Contact Us', link: '/contact' },
-        { name: 'Our App', link: '/app' }
+        { name: 'Services', link: '/services' },
+        { name: 'Our App', link: '/app' },
+        
     ];
     return (
-        <div className='w-full h-full flex flex-col font-comfortaa'>
+        <div className='w-full h-full flex flex-col font-comfortaa z-100'>
             <div className='w-full px-10 md:px-20 flex fixed bg-[#fff]'>
                 <div className='w-1/5'>
                     <img src={CharizHomesLogo} />
