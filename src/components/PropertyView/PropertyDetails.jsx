@@ -61,7 +61,7 @@ function PropertyDetails({details}) {
         </div>
         <div className='w-full flex justify-between mt-4'>
           <p className='text-sm font-bold text-[#000] flex gap-2 justify-center items-center'><img src={LocationIcon} /> Nigeria<span className='text-[#F29254]'>Show on map</span> </p>
-          <button className=' bg-[#F29254] px-10 py-2 rounded-3xl text-[#fff] text-center font-semibold flex text-xl font-bold'>Check Availability</button>
+          <button className='floating-button bg-[#F29254] px-10 py-2 rounded-3xl text-[#fff] text-center font-semibold flex text-xl font-bold'>Check Availability</button>
         </div>
 
         <div className="w-full overflow-x-auto mt-20">
@@ -86,7 +86,7 @@ function PropertyDetails({details}) {
               <p className='mb-2'>{details?.description} </p>
               <br />
             </div>
-            <button className=' bg-[#F29254] px-10 py-2 rounded-3xl text-[#fff] text-center font-semibold flex text-xl font-bold items-center cursor-pointer mt-6'>Check Availability</button>
+            <button className=' floating-button bg-[#F29254] px-10 py-2 rounded-3xl text-[#fff] text-center font-semibold flex text-xl font-bold items-center cursor-pointer mt-6'>Check Availability</button>
           </div>
           <div className='w-1/5 h-full'>
             <div className='w-full rounded-2xl bg-[#fff] p-8 flex flex-col gap-4'>
@@ -106,7 +106,7 @@ function PropertyDetails({details}) {
         <div className='w-full mt-20'>
           <div className='w-full flex justify-between items-center'>
             <h2 className='text-xl'>Great Reviews</h2>
-            <button className=' bg-[#F29254] px-10 py-2 rounded-3xl text-[#fff] text-center font-semibold flex text-xl font-bold'>Read all reviews</button>
+            <button className='floating-button bg-[#F29254] px-10 py-2 rounded-3xl text-[#fff] text-center font-semibold flex text-xl font-bold'>Read all reviews</button>
           </div>
 
           <div className="flex w-full mt-4 gap-10 overflow-x-scroll">
@@ -147,7 +147,7 @@ function PropertyDetails({details}) {
       <div className='h-[368px] w-full bg-[#FDDAC4] flex flex-col justify-center items-center p-14 gap-4'>
           <p className='text-lg text-[#AB4412] max-w-[872px] m-auto text-center'>We're here to help. Contact CharizHomes for inquiries, support, or more information about our services.</p>
           <input className='rounded-full bg-[#fff] max-w-[676px] m-auto w-full px-10 py-4' placeholder='Enter Your Email'></input>
-          <button className='rounded-full bg-[#fff] text-[#F29254] font-bold max-w-[367px] m-auto w-full px-10 py-4 flex justify-center items-center'>Subscribe</button>
+          <button className='floating-button rounded-full bg-[#fff] text-[#F29254] font-bold max-w-[367px] m-auto w-full px-10 py-4 flex justify-center items-center'>Subscribe</button>
         </div>
     </div>
   )

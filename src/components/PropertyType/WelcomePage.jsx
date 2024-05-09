@@ -44,7 +44,7 @@ function WelcomeSection() {
                 <div className='w-full m-auto max-w-[1377px] bg-justForYou p-10 flex flex-col gap-4 bg-cover justify-center min-h-[263px] rounded-xl'>
                     <p className='text-2xl font-bold text-[#fff] text-center'>Just for you</p>
                     <p className='text-xl text-[#fff] text-center max-w-[900px] m-auto'>Planning a trip somewhere? Whether it’s personal, family, leisure or corporate; Grab exclusive travel offers tailored to your specific needs with Chariz Travels</p>
-                    <button className='bg-[#F29254] px-16 py-2 rounded-3xl text-[#fff] text-center font-semibold flex text-md font-bold items-center cursor-pointer w-fit m-auto'>Find Travel Deals</button>
+                    <button className='floating-button bg-[#F29254] px-16 py-2 rounded-3xl text-[#fff] text-center font-semibold flex text-md font-bold items-center cursor-pointer w-fit m-auto'>Find Travel Deals</button>
                 </div>
                 <div className='flex flex-col w-full max-w-[1377px] m-auto gap-10'>
                     <h2 className='text-3xl text-[#F29254] font-medium text-center'>Browse by property type</h2>
@@ -54,7 +54,7 @@ function WelcomeSection() {
                         ))}
                     </div>
                 </div>
-                <button className='bg-[#F29254] px-28 py-2 rounded-3xl text-[#fff] text-center font-semibold flex text-lg font-bold items-center cursor-pointer w-fit m-auto'>View All</button>
+                <button className='floating-button bg-[#F29254] px-28 py-2 rounded-3xl text-[#fff] text-center font-semibold flex text-lg font-bold items-center cursor-pointer w-fit m-auto'>View All</button>
 
                 <div className='flex flex-col w-full max-w-[1377px] m-auto gap-10'>
                     <h2 className='text-3xl text-[#F29254] font-medium text-center'>Stay at our top unique properties</h2>
@@ -72,7 +72,7 @@ function WelcomeSection() {
                     ))}
                 </div>
                 </div>
-                <button className='bg-[#F29254] px-28 py-2 rounded-3xl text-[#fff] text-center font-semibold flex text-lg font-bold items-center cursor-pointer w-fit m-auto'>View More</button>
+                <button className='floating-button bg-[#F29254] px-28 py-2 rounded-3xl text-[#fff] text-center font-semibold flex text-lg font-bold items-center cursor-pointer w-fit m-auto'>View More</button>
 
                 <div className='flex flex-col w-full max-w-[1377px] m-auto gap-10'>
                     <h2 className='text-3xl text-[#F29254] font-medium text-center'>Top rated by our guests</h2>
@@ -90,7 +90,7 @@ function WelcomeSection() {
                     ))}
                 </div>
                 </div>
-                <button className='bg-[#F29254] px-28 py-2 rounded-3xl text-[#fff] text-center font-semibold flex text-lg font-bold items-center cursor-pointer w-fit m-auto'>View More</button>
+                <button className='floating-button bg-[#F29254] px-28 py-2 rounded-3xl text-[#fff] text-center font-semibold flex text-lg font-bold items-center cursor-pointer w-fit m-auto'>View More</button>
                 
                 <div className='flex flex-col w-full max-w-[1377px] m-auto gap-10'>
                     <h2 className='text-3xl text-[#F29254] font-medium text-center'>Things to try</h2>

@@ -78,23 +78,42 @@ select:invalid {
     width: 90%;
     margin: auto
 }
+
 .embla__slide {
-    flex: 0 0 208px; /* Slide covers 200px of the viewport */
+    flex: 0 0 208px;
+    /* Slide covers 200px of the viewport */
     min-width: 0;
-  }
+}
 
 .embla__prev {
     position: absolute;
-    left:0px;
+    left: 0px;
 }
 
 .embla__next {
     position: absolute;
-    right:0px;
+    right: 0px;
 }
+
 .embla__container {
     grid-column-gap: 50px;
-  }
+}
+
+.floating-button {
+    bottom: 20px;
+    right: 20px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    z-index: 9999;
+}
+
+.floating-button:hover {
+    background-color: #eca269;
+    color: #fff;
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
 
 @media only screen and (min-width: 768px) {
     .rotated-text {

@@ -35,7 +35,7 @@ function HeroPage() {
                         <button 
                             onClick={() => setSelectedFeat(item?.name)}
                             key={item?.id}
-                            className= {` px-6 py-2 rounded-3xl text-center font-semibold flex text-lg font-bold items-center min-w-[200px] justify-center text-center border border-[#F29254] ${selectedFeat === item?.name ? "bg-[#F29254] text-[#fff]" : "bg-[#fff] text-[#F29254]"}`}
+                            className= {` floating-button px-6 py-2 rounded-3xl text-center font-semibold flex text-lg font-bold items-center min-w-[200px] justify-center text-center border border-[#F29254] ${selectedFeat === item?.name ? "bg-[#F29254] text-[#fff]" : "bg-[#fff] text-[#F29254]"}`}
                         >{item?.name}</button>))}
                 </div>
             </div>

@@ -5,6 +5,7 @@ import DropDownIcon from "../../assets/la-icons/dropdown-icon.svg"
 import DropDownArrow from "../../assets/la-icons/dropdown-arrow.svg";
 import ApartmentImage from "../../assets/la-images/apartments-image.svg";
 import StarRatings from "../../assets/la-images/star-ratings.svg";
+import LoveIcon from "../../assets/la-images/love-icon.svg";
 import LocationIcons from "../../assets/la-icons/location-icon.svg";
 import Slider from 'rc-slider';
 import 'rc-slider/assets/index.css';
@@ -41,7 +42,7 @@ function PropertyList() {
     const navigate = useNavigate()
     const dispatch = useDispatch();
     const [value, setValue] = useState([0, 1000000]);
-    const [loading, setLoading] = useState(false)
+    const [loading, setLoading] = useState(true)
     const [listings, setListings] = useState([])
 
     const handleChange = (newValue) => {
@@ -121,7 +122,7 @@ function PropertyList() {
                     <div className='flex justify-between'>
                         <img src={BackIcon} className="cursor-pointer" />
                         <h2 className='text-4xl font-bold items-center text-center flex'>Properties Found</h2>
-                        <div className='gap-6 flex border border-[#F29254] p-2 items-center justify-center bg-[#fff] rounded-full h-fit'>
+                        <div className='gap-6 flex border border-[#F29254] px-6 py-2 items-center justify-center bg-[#fff] rounded-full h-fit'>
                             <img src={DropDownIcon} />
                             <p >Our Top Picks</p>
                             <img src={DropDownArrow} />
@@ -171,8 +172,9 @@ function PropertyList() {
                         <div className='h-screen  col-span-1 md:col-span-3 w-full overflow-x-scroll'>
                             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                                 {listings.map(card => (
-                                    <div key={card.id} className="rounded-xl bg-white p-2">
-                                        <img src={card.imageSrc} alt={card.title} className="w-full h-[205px] object-cover rounded-t-lg" />
+                                    <div key={card.id} className="rounded-3xl bg-white p-2 relative">
+                                        <img src={card.imageSrc} alt={card.title} className="w-full h-[205px] object-cover rounded-2xl" />
+                                        <img src={LoveIcon} alt={"like"} className=" absolute right-4 top-4" />
                                         <div className="py-4 px-2">
                                             <h2 className="font-bold text-xl mb-2">{card.title}</h2>
                                             <h2 className="font-bold text-xl text-[#F29254] mb-1">N{card?.price}k/Night</h2>
@@ -181,7 +183,7 @@ function PropertyList() {
                                             <div className='mt-4'>
                                             <button 
                                                 onClick={() => goToDetailsPage(card?.id)}
-                                                className='bg-[#F29254] px-16 py-2 rounded-3xl text-[#fff] text-center font-semibold flex text-md font-bold items-center cursor-pointer w-full justify-center'
+                                                className='floating-button bg-[#F29254] px-16 py-2 rounded-3xl text-[#fff] text-center font-semibold flex text-md font-bold items-center cursor-pointer w-full justify-center'
                                             >Check Availability</button>
                                             </div>
                                         </div>

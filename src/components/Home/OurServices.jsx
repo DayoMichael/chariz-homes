@@ -36,7 +36,7 @@ function OurServices() {
                         ))}
                     </div>
                 </div>
-                <button className='bg-[#F29254] px-6 py-2 rounded-3xl text-[#fff] text-center font-semibold flex text-xl font-bold items-center cursor-pointer w-fit m-auto'>View More</button>
+                <button className=' floating-button bg-[#F29254] px-6 py-2 rounded-3xl text-[#fff] text-center font-semibold flex text-xl font-bold items-center cursor-pointer w-fit m-auto'>View More</button>
 
             </div>
         </div>

@@ -12,7 +12,7 @@ function WhyChooseUs() {
         { id: 2, name: 'Wide Range of Lifestyle Services Under One Roof', image: LifestyleIcon },
         { id: 3, name: 'Commitment to Quality, Comfort, and Convenience', image: AwardsIcon },
         { id: 4, name: 'Strategic locations for easy access to local attractions', image: STLocation },
-        { id: 5, name: 'Exclusive Deals and Offers for Our Community Members', image: GiftIcon },
+        // { id: 5, name: 'Exclusive Deals and Offers for Our Community Members', image: GiftIcon },
     ];
 
     const testimonials = [
@@ -37,9 +37,18 @@ function WhyChooseUs() {
                                 <p className="text-center">{service.name}</p>
                             </div>
                         ))}
+                        
                     </div>
-                </div>
+                    <div className='flex justify-center mt-8'>
+                            <div className="bg-white rounded-full p-2 flex gap-2 justify-start items-center w-1/2">
+                                <div className='bg-[#F29254] rounded-full w-[50px] h-[50px] flex justify-center items-center'>
+                                    <img src={GiftIcon} />
+                                </div>
+                                <p className="text-center">Exclusive Deals and Offers for Our Community Members</p>
+                            </div>
 
+                        </div>
+                </div>
             </div>
             <div className='w-full h-full flex flex-col justify-center py-10 gap-10 max-w-[90%] m-auto'>
                 <h2 className='text-5xl text-[#F29254] font-medium text-center'>Testimonials</h2>
@@ -59,7 +68,7 @@ function WhyChooseUs() {
             <div className='h-[368px] w-full bg-[#FDDAC4] flex flex-col justify-center items-center p-14 gap-4'>
                 <p className='text-lg text-[#AB4412] max-w-[872px] m-auto text-center'>We're here to help. Contact CharizHomes for inquiries, support, or more information about our services.</p>
                 <input className='rounded-full bg-[#fff] max-w-[676px] m-auto w-full px-10 py-4' placeholder='Enter Your Email'></input>
-                <button className='rounded-full bg-[#fff] text-[#F29254] font-bold max-w-[367px] m-auto w-full px-10 py-4 flex justify-center items-center'>Subscribe</button>
+                <button className='floating-button rounded-full bg-[#fff] text-[#F29254] font-bold max-w-[367px] m-auto w-full px-10 py-4 flex justify-center items-center'>Subscribe</button>
             </div>
         </div>
     )

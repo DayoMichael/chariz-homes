@@ -42,7 +42,7 @@ function OurServices() {
                         <p className='text-xl font-bold text-[#fff] text-left'>Get notified and grab instant deals as a member of our community</p>
                         <div className='flex gap-4'>
                             <input className='rounded-full bg-[#fff] m-auto w-full px-10 py-4' placeholder='Enter Your Email'></input>
-                            <button className='rounded-full bg-[#fff] text-[#F29254] font-bold m-auto px-10 py-4 flex justify-center items-center'>Subscribe</button>
+                            <button className='floating-button rounded-full bg-[#fff] text-[#F29254] font-bold m-auto px-10 py-4 flex justify-center items-center'>Subscribe</button>
 
                         </div>
                     </div >

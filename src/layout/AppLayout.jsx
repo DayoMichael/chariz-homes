@@ -34,7 +34,7 @@ function AppLayout({ children }) {
                         <button className='rounded-3xl border border-2 border-[#F29254] font-semibold text-lg py-2 px-8 text-[#F29254] flex justify-center items-center'>
                             Sign up
                         </button>
-                        <button className='rounded-3xl bg-[#F29254] font-semibold text-lg py-2 px-8 text-[#fff] flex justify-center items-center'>
+                        <button className='floating-button rounded-3xl bg-[#F29254] font-semibold text-lg py-2 px-8 text-[#fff] flex justify-center items-center'>
                            Login
                         </button>
 
