@@ -4,8 +4,10 @@ import InputField from '../../library/InputField/InputField';
 import EmailIcon from '../../assets/la-icons/email-icon.svg';
 import LockIcon from '../../assets/la-icons/lock-icon.svg';
 import Button from '../../library/Button/Button';
+import { useNavigate } from 'react-router-dom';
 
 function Signup() {
+  const navigate = useNavigate()
   const [formData, setFormData] = useState({
     email: '',
     password: '',
@@ -17,6 +19,8 @@ function Signup() {
     passwordValid: false,
     confirmPasswordValid: false
   });
+
+  const goToNext = () => navigate("/otp")
 
   const handleUserInput = (e) => {
     const { name, value } = e.target;
@@ -66,7 +70,7 @@ function Signup() {
 
   return (
     <OnboardingLayout link="/" text="home">
-      <div className='border-2 border-[#F29254] h-full rounded-3xl w-full bg-opacity-30 backdrop-filter backdrop-blur-lg justify-center px-12 py-16'>
+      <div className='border-2 border-[#F29254] rounded-3xl w-full bg-opacity-30 backdrop-filter backdrop-blur-lg justify-center px-12 py-10'>
         <h2 className='text-2xl text-center text-[#F29254] font-semibold'>Signup</h2>
         <p className='mt-4 text-center text-lg'>Hey there, pick up where you left off</p>
         <div className='mt-8 flex flex-col gap-4'>
@@ -106,6 +110,7 @@ function Signup() {
             <Button
               text='Signup'
               disabled={!isFormValid()}
+              onClick={goToNext}
             />
           </div>
           <p className='text-lg text-center mt-16'>  Already have an account? <span className='text-[#F29254] cursor-pointer'>Login</span></p>

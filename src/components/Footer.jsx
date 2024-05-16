@@ -7,15 +7,21 @@ import Linkedin from '../assets/la-icons/linkedin-icon.svg';
 import Twitter from '../assets/la-icons/twitter-icon.svg';
 import Instagram from '../assets/la-icons/instagram.svg';
 
-const Footer = () => {
-    const navigate = useNavigate()
+const Footer = ({showEmail=true}) => {
+  const navigate = useNavigate()
   const textVariants = {
     initial: { fontSize: '4.5rem', fontWeight: '300' },
     hovered: { fontSize: '5.1rem', fontWeight: '600' },
   };
 
   return (
-    <footer className="bg-[#F29254] py-24">
+    <>
+      {showEmail && <div className='h-[368px] w-full bg-[#FDDAC4] flex flex-col justify-center items-center p-14 gap-4'>
+        <p className='text-lg text-[#AB4412] max-w-[872px] m-auto text-center'>We're here to help. Contact CharizHomes for inquiries, support, or more information about our services.</p>
+        <input className='rounded-full bg-[#fff] max-w-[676px] m-auto w-full px-10 py-4' placeholder='Enter Your Email'></input>
+        <button className='floating-button rounded-full bg-[#fff] text-[#F29254] font-bold max-w-[367px] m-auto w-full px-10 py-4 flex justify-center items-center'>Subscribe</button>
+      </div>}
+      <footer className="bg-[#F29254] py-24">
 
         <div className="w-full pb-12 border-b border-white max-w-[80vw] lg:max-w-[90vw] mx-auto">
           <div className="relative w-full flex flex-col md:flex-row items-start md:items-center justify-between">
@@ -40,7 +46,7 @@ const Footer = () => {
             <div className="hidden md:block">
               <p
                 className="text-xs font-nexa text-[#fff]"
-                
+
               >
                 About us
               </p>
@@ -94,7 +100,8 @@ const Footer = () => {
             All Rights Reserved <span className="text-lg font-thin">&copy;</span> La Chariz Group 2023
           </h4>
         </div>
-    </footer>
+      </footer>
+    </>
   );
 };
 

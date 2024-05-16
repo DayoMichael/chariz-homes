@@ -105,7 +105,7 @@ select:invalid {
     border: none;
     cursor: pointer;
     transition: all 0.3s ease;
-    z-index: 9;
+    z-index: 0;
 }
 
 .floating-button:hover {

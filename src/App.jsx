@@ -1,7 +1,6 @@
 import React from "react"
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import HomePage from "./pages";
-import PropertyPage from "./pages/property";
+import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
+import HomeView from "./pages";
 import PropertyView from "./pages/propertyView";
 import PropertyListView from "./pages/PropertyListView";
 import Services from "./pages/services";
@@ -11,23 +10,30 @@ import NewPassword from "./pages/onboarding/newpassword";
 import OTPView from "./pages/onboarding/otp";
 import ResetPassword from "./pages/onboarding/resetpassword";
 import ResetSuccessful from "./pages/onboarding/resetsuccessfull";
+import BookStay from "./pages/bookStay";
+import PropertyManagement from "./pages/PropertyManagement";
+import PropertyType from "./pages/PropertyType";
 
 function App() {
 
   return (
     <Router>
       <Routes>
-        <Route exact path="/" element={<HomePage />}/>
-       
+        <Route exact path="/" element={<HomeView />}/>
         <Route path="/services" element={<Services />} />
         <Route path="/properties" element={<PropertyListView />} />
+        <Route path="/property-management" element={<PropertyManagement />} />
         <Route path="/property-view" element={<PropertyView />} />
+        <Route path="/property-type" element={<PropertyType />} />
+        <Route path="/book-stay" element={<BookStay />} />
         <Route path="/signup" element={<Signup />}/>
         <Route path="/login" element={<Login />}/>
         <Route path="/newpassword" element={<NewPassword />}/>
         <Route path="/resetpassword" element={<ResetPassword />}/>
         <Route path="/resetsuccessful" element={<ResetSuccessful />}/>
         <Route path="/otp" element={<OTPView />}/>
+        {/* Redirect all unknown routes to '/' */}
+        <Route path="*" element={<Navigate to="/" />} />
       </Routes>
     </Router>
   )

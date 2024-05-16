@@ -24,13 +24,9 @@ function PropertyView() {
         setLoading(false)
         if(status){
             setDetails(data)
-            console
         }
     }
 
-    console.log(details)
-
-    console.log(location, "location", details)
     useEffect(() => {
         getListingDetails()
     },[])

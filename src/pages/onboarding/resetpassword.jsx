@@ -27,7 +27,7 @@ function ResetPassword() {
         setEmailError('');
 
         // If validations pass, proceed with verification process
-        console.log('Verifying...');
+
     };
 
     // Function to validate email format

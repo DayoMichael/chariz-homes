@@ -1,34 +1,47 @@
 import React from 'react';
+import Cookies from 'js-cookie'
 import { useLocation, useNavigate } from 'react-router-dom';
-import CharizHomesLogo from "../assets/la-icons/homes-logo.svg"
+import CharizHomesLogo from "../assets/la-icons/homes-logo.svg";
+import SearchIcon from "../assets/la-icons/search-icon.svg";
+import ProfileIcon from "../assets/la-icons/big-profile-icon.svg";
 
 function AppLayout({ children }) {
     const navigate = useNavigate()
     const location = useLocation();
+    const loggedIn = Cookies.get("LacharizToken")
     const navLinks = [
         { name: 'Home', link: '/' },
-        { name: 'Properties', link: '/properties' },
+        { name: 'Services', link: '/services' },
         { name: 'About Us', link: '/about' },
         { name: 'Contact Us', link: '/contact' },
+        { name: 'Our App', link: '/app' },
+    ];
+    const authenticatedNavLinks = [
+        { name: 'Home', link: '/' },
+        { name: 'Property Management', link: '/property-management' },
+        { name: 'Pickup & Dropoff', link: '/pickup' },
+        { name: 'Tour Guide', link: '/tour' },
         { name: 'Services', link: '/services' },
         { name: 'Our App', link: '/app' },
-        
     ];
+
+    const nav = loggedIn ? authenticatedNavLinks : navLinks
+
     const goTo = (link) => {
         navigate(link)
     }
     return (
-        <div className='w-full h-full flex flex-col font-comfortaa'>
-            <div className='w-full px-10 md:px-20 flex fixed bg-[#fff] z-50'> {/* Ensure this navbar is above other content */}
+        <div className='w-full h-full flex flex-col font-comfortaa '>
+            <div className='w-full px-10 md:px-20 justify-center items-center flex fixed bg-[#fff] z-50 justify-between'> {/* Ensure this navbar is above other content */}
                 <div className='w-1/5'>
                     <img src={CharizHomesLogo} />
                 </div>
-                <div className='w-4/5 gap-40 flex items-center justify-center'>
-                    <div className='flex gap-8'>
-                        {navLinks.map((navItem, index) => (
+                <div className='w-4/5 gap-40 flex items-center justify-end'>
+                    <div className='hidden xl:flex gap-8'>
+                        {nav.map((navItem, index) => (
                             <div
                                 key={index}
-                                className={` text-sm ${location.pathname === navItem.link ? 'nav-item active' : 'nav-item'}`}
+                                className={` text-xs ${location?.pathname === navItem.link ? 'border-2 border-[#F29254] rounded-full px-4 py-2' : 'mt-2'}`}
                             >
                                 <a href={navItem.link} style={{ color: location.pathname === navItem.link ? 'text-[#F29254]' : 'text-[#000]' }}>
                                     {navItem.name}
@@ -36,14 +49,21 @@ function AppLayout({ children }) {
                             </div>
                         ))}
                     </div>
-                    <div className='flex gap-4 justify-end text-sm'>
-                        <button className='rounded-3xl border border-2 border-[#F29254] font-semibold text-lg py-2 px-8 text-[#F29254] flex justify-center items-center' onClick={() => goTo("/signup")}>
-                            Sign up
-                        </button>
-                        <button className='floating-button rounded-3xl bg-[#F29254] font-semibold text-lg py-2 px-8 text-[#fff] flex justify-center items-center' onClick={() => goTo("/login")}>
-                           Login
-                        </button>
-                    </div>
+                    {!loggedIn ?
+                        <div className='flex gap-4 justify-end text-sm'>
+                            <button className='rounded-3xl border border-2 border-[#F29254] font-semibold text-lg py-2 px-8 text-[#F29254] flex justify-center items-center' onClick={() => goTo("/signup")}>
+                                Sign up
+                            </button>
+                            <button className='floating-button rounded-3xl bg-[#F29254] font-semibold text-lg py-2 px-8 text-[#fff] flex justify-center items-center' onClick={() => goTo("/login")}>
+                                Login
+                            </button>
+                        </div>
+                        : <div className='flex gap-4 justify-end'>
+                            <img src={SearchIcon} />
+                            <img src={ProfileIcon} />
+                        </div>
+                    }
+
                 </div>
             </div>
             <div className='flex flex-col w-full'>

@@ -1,11 +1,14 @@
 import React, { useState } from 'react';
+import Cookies from "js-cookie"
 import OnboardingLayout from '../../layout/OnboardingLayout';
 import InputField from '../../library/InputField/InputField';
 import EmailIcon from '../../assets/la-icons/email-icon.svg';
 import LockIcon from '../../assets/la-icons/lock-icon.svg';
 import Button from '../../library/Button/Button';
+import { useNavigate } from 'react-router-dom';
 
 function Login() {
+    const navigate = useNavigate()
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [emailError, setEmailError] = useState('');
@@ -22,6 +25,11 @@ function Login() {
             setPasswordError(validatePassword(value) ? '' : 'Password must be at least 6 characters');
         }
     };
+
+    const goToDashboard = () => {
+        Cookies.set("LacharizToken", "loggedIn")
+        navigate("/")
+    }
 
     const validateEmail = (email) => {
         // Basic email validation
@@ -71,6 +79,7 @@ function Login() {
                         <Button
                             text='Login'
                             disabled={!isFormValid()}
+                            onClick={goToDashboard}
                         />
                         <p className='text-lg text-[#F29254] text-center mt-4 cursor-pointer'>Forgot Password</p>
                     </div>

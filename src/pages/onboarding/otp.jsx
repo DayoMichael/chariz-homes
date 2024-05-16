@@ -1,9 +1,12 @@
 import React, { useState, useEffect } from 'react';
+import Cookies from "js-cookie"
 import OnboardingLayout from '../../layout/OnboardingLayout';
 import PINInput from '../../library/PinInput/PinInput';
 import Button from '../../library/Button/Button';
+import { useNavigate } from 'react-router-dom';
 
 function OTPView() {
+    const navigate = useNavigate()
     const [pin, setPin] = useState('');
     const [timeLeft, setTimeLeft] = useState(120); // 2 minutes in seconds
     const [isResendDisabled, setIsResendDisabled] = useState(false);
@@ -12,7 +15,7 @@ function OTPView() {
     // Function to handle resend code
     const resendCode = () => {
         // Logic to resend code
-        console.log('Code resent!');
+
     };
 
     // Format time left for display
@@ -21,8 +24,13 @@ function OTPView() {
     // Function to handle verification
     const handleVerify = () => {
         // Logic to verify PIN
-        console.log('Verifying PIN:', pin);
+ 
     };
+
+    const goToDashboard = () => {
+        Cookies.set("LacharizToken", "loggedIn")
+        navigate("/otp")
+    }
 
     // Countdown timer effect
     useEffect(() => {
@@ -56,7 +64,7 @@ function OTPView() {
                     <div className='max-w-[70%] m-auto'>
                         <Button
                             text='Verify'
-                            onClick={handleVerify}
+                            onClick={goToDashboard}
                             disabled={!pin || pin.length !== length} // Disable button if PIN is not complete
                         />
                     </div>

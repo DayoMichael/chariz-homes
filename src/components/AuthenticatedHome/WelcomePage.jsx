@@ -1,4 +1,5 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import AprtImage from "../../assets/la-images/aprt-image.svg";
 import DuplexesImage from "../../assets/la-images/duplexes-image.svg";
 import VillasImage from "../../assets/la-images/villas-image.svg";
@@ -10,16 +11,18 @@ import AlmatImage from "../../assets/la-images/almart-image.svg";
 import MaitImage from "../../assets/la-images/maitama-park.svg";
 import KayaksImage from "../../assets/la-images/kayaks-image.svg";
 
+
 const GridItem = ({ imageUrl, name }) => (
-    <div className="flex flex-col items-left w-1/3">
-      <div className="w-[444px] h-[262px] overflow-hidden rounded mb-2">
-        <img src={imageUrl} alt="Profile" className="object-cover w-full h-full" />
-      </div>
-      <p className="font-bold text-left pl-4">{name}</p>
+    <div className="flex flex-col items-left cols-span-1">
+        <div className="w-[100%] h-[262px] overflow-hidden rounded mb-2">
+            <img src={imageUrl} alt="Profile" className="object-cover w-full h-full" />
+        </div>
+        <p className="font-bold text-left pl-4">{name}</p>
     </div>
 );
 
 function WelcomeSection() {
+    const navigate = useNavigate()
     const data = [
         { imageUrl: AprtImage, name: 'Apartments' },
         { imageUrl: VillasImage, name: 'Villas' },
@@ -47,14 +50,14 @@ function WelcomeSection() {
                     <button className='floating-button bg-[#F29254] px-16 py-2 rounded-3xl text-[#fff] text-center font-semibold flex text-md font-bold items-center cursor-pointer w-fit m-auto'>Find Travel Deals</button>
                 </div>
                 <div className='flex flex-col w-full max-w-[1377px] m-auto gap-10'>
-                    <h2 className='text-3xl text-[#F29254] font-medium text-center'>Browse by property type</h2>
-                    <div className="flex overflow-x-auto gap-10 w-full">
+                    <h2 className='text-2xl md:text-3xl text-[#F29254] font-medium text-center'>Browse by property type</h2>
+                    <div className="flex grid  grid-cols-1 sm:grid-cols-2 md:grid-cols-3 w-full gap-10 mt-10">
                         {data.map((item, index) => (
                             <GridItem key={index} imageUrl={item.imageUrl} name={item.name} />
                         ))}
                     </div>
                 </div>
-                <button className='floating-button bg-[#F29254] px-28 py-2 rounded-3xl text-[#fff] text-center font-semibold flex text-lg font-bold items-center cursor-pointer w-fit m-auto'>View All</button>
+                <button className='floating-button bg-[#F29254] px-28 py-2 rounded-3xl text-[#fff] text-center font-semibold flex text-lg font-bold items-center cursor-pointer w-fit m-auto' onClick={() => navigate("/property-type")}>View All</button>
 
                 <div className='flex flex-col w-full max-w-[1377px] m-auto gap-10'>
                     <h2 className='text-3xl text-[#F29254] font-medium text-center'>Stay at our top unique properties</h2>
@@ -72,7 +75,7 @@ function WelcomeSection() {
                     ))}
                 </div>
                 </div>
-                <button className='floating-button bg-[#F29254] px-28 py-2 rounded-3xl text-[#fff] text-center font-semibold flex text-lg font-bold items-center cursor-pointer w-fit m-auto'>View More</button>
+                <button className='floating-button bg-[#F29254] px-28 py-2 rounded-3xl text-[#fff] text-center font-semibold flex text-lg font-bold items-center cursor-pointer w-fit m-auto' onClick={() => navigate("/properties")}>View More</button>
 
                 <div className='flex flex-col w-full max-w-[1377px] m-auto gap-10'>
                     <h2 className='text-3xl text-[#F29254] font-medium text-center'>Top rated by our guests</h2>
@@ -90,7 +93,7 @@ function WelcomeSection() {
                     ))}
                 </div>
                 </div>
-                <button className='floating-button bg-[#F29254] px-28 py-2 rounded-3xl text-[#fff] text-center font-semibold flex text-lg font-bold items-center cursor-pointer w-fit m-auto'>View More</button>
+                <button className='floating-button bg-[#F29254] px-28 py-2 rounded-3xl text-[#fff] text-center font-semibold flex text-lg font-bold items-center cursor-pointer w-fit m-auto' onClick={() => navigate("/properties")}>View More</button>
                 
                 <div className='flex flex-col w-full max-w-[1377px] m-auto gap-10'>
                     <h2 className='text-3xl text-[#F29254] font-medium text-center'>Things to try</h2>
