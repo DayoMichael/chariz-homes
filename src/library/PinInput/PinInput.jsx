@@ -71,7 +71,7 @@ const Styles = styled.div`
     }
 `;
 
-PINInput.propTypes = {
+PinInput.propTypes = {
     label: PropTypes.string.isRequired,
     length: PropTypes.number.isRequired,
     onChange: PropTypes.func.isRequired,
