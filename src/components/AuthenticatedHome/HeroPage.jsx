@@ -28,7 +28,7 @@ function HeroPage() {
         }
     ]
 
-    const goToBookingPage = () => navigate("/book-stay")
+    const goToBookingPage = () => navigate("/properties")
     return (
         <div className='flex w-full h-screen  bg-heroImage bg-cover  flex-col px-10 '>
             <div className='w-full flex flex-col items-center justify-center items-center gap-10 md:max-w-[1235px] m-auto'>
@@ -36,7 +36,6 @@ function HeroPage() {
                     Your Home for Luxury Short Stays and More
                 </h4>
                 <p className='text-2xl'>Experience Comfort, Convenience, and Class with Our Tailored Services</p>
-                <button className='bg-[#F29254] px-6 py-2 rounded-3xl text-[#fff] text-center font-semibold flex text-xl font-bold items-center cursor-pointer'>Discover your perfect stay</button>
                 <div className='flex w-full z-[10000px]'>
 
 

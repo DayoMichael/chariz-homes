@@ -7,7 +7,7 @@ function HomeView() {
    const loggedIn =  Cookies.get("LacharizToken");
   return (
     <>
-        {loggedIn ? <AuthenticatedHome /> : <HomePage /> }
+      <AuthenticatedHome />
     </>
   )
 }

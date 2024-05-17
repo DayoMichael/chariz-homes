@@ -119,9 +119,12 @@ function PropertyList() {
         <Styled>
             <div className='bg-[#ECECEC] mt-20 min-h-screen'>
                 <div className='flex flex-col w-full max-w-[90%] m-auto py-20 h-full'>
-                    <div className='flex justify-between'>
+                    <div className='flex justify-between items-center'>
+                        <div className=' w-1/3'>
                         <img src={BackIcon} className="cursor-pointer" />
-                        <h2 className='text-4xl font-bold items-center text-center flex'>Properties Found</h2>
+                        </div>
+                       
+                        <h2 className='text-4xl font-bold items-center text-center flex w-1/3'>{data?.length} Properties Found</h2>
                         <div className='gap-6 flex border border-[#F29254] px-6 py-2 items-center justify-center bg-[#fff] rounded-full h-fit'>
                             <img src={DropDownIcon} />
                             <p >Our Top Picks</p>

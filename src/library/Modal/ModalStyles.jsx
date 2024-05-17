@@ -5,7 +5,7 @@ export const ModalStyles = styled.div`
 .modal {
   display: flex; /* Hidden by default */
   position: fixed; /* Stay in place */
-  z-index: 1; /* Sit on top */
+  z-index: 100000000; /* Sit on top */
   left: 0;
   top: 0;
   width: 100%; /* Full width */
@@ -20,7 +20,7 @@ export const ModalStyles = styled.div`
   background-color: #ffff;
   margin: auto;
   border: 1px solid #D9D9D9;
-  width: 544px;
+  width: 80%;
   max-width: 96%;
   border-radius: 8px;
 }
