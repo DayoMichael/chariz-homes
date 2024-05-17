@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { styled } from 'styled-components';
 import BackIcon from "../../assets/la-icons/back-icon.svg";
 import CheckInOutPicker from '../../library/CheckInOut/CheckInOut';
@@ -18,7 +19,9 @@ import BusIcon from '../../assets/la-icons/bus-icon.svg';
 import Button from '../../library/Button/Button';
 import Footer from '../Footer';
 
+
 function Header() {
+    const navigate = useNavigate()
     const [rooms, setRooms] = useState(1);
     const [selectedServices, setSelectedServices] = useState([])
     const list = ["Entire apartment", "74 m", "Private Kitchen", "Balcony", "Sea view", "Lake view", "Garden view", "Pool View", "Pool with a view", "Inner courtyard view", "Air Conditioning", "Patio", "Dish washer", "Flat-screen Tv"]
@@ -86,7 +89,7 @@ function Header() {
             <div className='bg-[#ECECEC] mt-20 min-h-screen'>
                 <div className='flex flex-col w-full max-w-[90%] m-auto py-20 h-full'>
                     <div className='flex justify-between'>
-                        <img src={BackIcon} className="cursor-pointer" />
+                        <img src={BackIcon} className="cursor-pointer" onClick={() => navigate("/")}/>
                         <h2 className='text-4xl font-bold items-center text-center flex'>Book your stay</h2>
                         <div className='gap-6 opacity-0 border border-[#F29254] px-6 py-2 items-center justify-center bg-[#fff] rounded-full h-fit'>
                         </div>
