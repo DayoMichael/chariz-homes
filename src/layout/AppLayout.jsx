@@ -25,7 +25,7 @@ function AppLayout({ children }) {
         { name: 'Our App', link: '/app' },
     ];
 
-    const nav = loggedIn ? authenticatedNavLinks : navLinks
+    const nav = authenticatedNavLinks 
 
     const goTo = (link) => {
         navigate(link)
@@ -41,9 +41,9 @@ function AppLayout({ children }) {
                         {nav.map((navItem, index) => (
                             <div
                                 key={index}
-                                className={` text-xs ${location?.pathname === navItem.link ? 'border-2 border-[#F29254] rounded-full px-4 py-2' : 'mt-2'}`}
+                                className={` text-xs ${location?.pathname === navItem.link ? 'border-2 border-[#F29254] rounded-full px-4 py-2' : 'mt-2'} cursor-pointer`}
                             >
-                                <a href={navItem.link} style={{ color: location.pathname === navItem.link ? 'text-[#F29254]' : 'text-[#000]' }}>
+                                <a className={`${navItem.name === "Our App" ? 'text-[#F29254]' : 'text-[#000]' }` } onClick={() => goTo(navItem.link)}>
                                     {navItem.name}
                                 </a>
                             </div>

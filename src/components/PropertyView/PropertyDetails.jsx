@@ -5,27 +5,33 @@ import HomeImage from "../../assets/la-images/home-image.svg";
 import StarRatings from "../../assets/la-images/star-ratings.svg";
 import RatingsImage from "../../assets/la-images/ratings-image.svg";
 import ReviewProfileImage from "../../assets/la-images/review-profile-image.svg";
+import CheckInOutPicker from '../../library/CheckInOut/CheckInOut';
+import GuestCountPicker from '../../library/GuestCountPicker/GuestCountPicker';
+import ApartmentIcon from '../../assets/la-icons/apartment-icon.svg'
+import Button from '../../library/Button/Button';
+import { useNavigate } from 'react-router-dom';
 
-function PropertyDetails({details}) {
+function PropertyDetails({ details }) {
+  const navigate = useNavigate()
   const [selectedFeat, setSelectedFeat] = useState("Homes")
-    const features = [
-        {
-            id: "homes",
-            name: "Homes",
-        },
-        {
-            id: "mgt",
-            name: "Property Management",
-        },
-        {
-            id: "pkp",
-            name: "Airport Pickup/Drop off",
-        },
-        {
-            id: "tour",
-            name: "Tour Guide",
-        }
-    ]
+  const features = [
+    {
+      id: "homes",
+      name: "Homes",
+    },
+    {
+      id: "mgt",
+      name: "Property Management",
+    },
+    {
+      id: "pkp",
+      name: "Airport Pickup/Drop off",
+    },
+    {
+      id: "tour",
+      name: "Tour Guide",
+    }
+  ]
   const images = [
     details?.imageSrc,
     details?.imageSrcTwo,
@@ -52,6 +58,8 @@ function PropertyDetails({details}) {
     { ReviewProfileImage: ReviewProfileImage, name: 'Jon Snow', StarRatings: 'star_ratings_url_4.jpg', description: 'This charming apartment offers a cozy feel with 3 bedrooms and This charming apartment offers a cozy feel with 3 bedrooms and' },
     { ReviewProfileImage: ReviewProfileImage, name: 'Jon Snow', StarRatings: 'star_ratings_url_4.jpg', description: 'This charming apartment offers a cozy feel with 3 bedrooms and This charming apartment offers a cozy feel with 3 bedrooms and' }
   ];
+
+  const goToBookingPage = () => navigate("/properties")
   return (
     <div className='bg-[#ECECEC]'>
       <div className='flex flex-col w-full max-w-[90%] m-auto py-20'>
@@ -65,9 +73,9 @@ function PropertyDetails({details}) {
         </div>
 
         <div className="w-full overflow-x-auto mt-20">
-          <div className="grid-container inline-grid grid-cols-2 md:grid-cols-3  lg:grid-cols-6 gap-10 p-4 w-full">
+          <div className="grid-container flex  gap-10 p-4 w-full overflow-x-scroll">
             {images.map((imageUrl, index) => (
-              <div key={index} className="grid-item w-full h-52 rounded-2xl overflow-hidden">
+              <div key={index} className=" w-full h-52 w-52 rounded-2xl overflow-hidden">
                 {imageUrl && <img src={imageUrl} alt={`Image ${index + 1}`} className="object-cover w-full h-full" />}
               </div>
             ))}
@@ -75,7 +83,7 @@ function PropertyDetails({details}) {
         </div>
         <div className='w-full flex gap-4 mt-10 overflow-x-scroll'>
           {Categories.map((item, index) => (
-            <div key={index} className='grid-item py-2 px-4 rounded-full bg-[#fff] flex gap-2 items-center w-fit whitespace-nowrap'>
+            <div key={index} className='grid-item p-2 rounded-full bg-[#fff] flex gap-2 items-center min-w-fit whitespace-nowrap'>
               <img src={WifiIcon} />
               <p className=''>{item}</p>
             </div>))}
@@ -135,20 +143,34 @@ function PropertyDetails({details}) {
             </ul>
           </div>
         </div>
-        <div className='p-6 border border-[#F29254] w-full mt-28 rounded-full flex gap-8 justify-center'>
-                    {features.map((item, index) => (
-                        <button 
-                            onClick={() => setSelectedFeat(item?.name)}
-                            key={item?.id}
-                            className= {` px-6 py-2 rounded-3xl text-center font-semibold flex text-lg font-bold items-center min-w-[200px] justify-center text-center border border-[#F29254] ${selectedFeat === item?.name ? "bg-[#F29254] text-[#fff]" : "bg-[#fff] text-[#F29254]"}`}
-                        >{item?.name}</button>))}
-                </div>
+        <div className='p-6 border border-[#F29254] w-full mt-28 rounded-full flex gap-8 justify-center bg-opacity-30 backdrop-filter backdrop-blur-lg min-w-[1400px] md:min-w-[1000px] md:w-fit'>
+          <div className="px-6 py-4 shadow-sm rounded-full text-center font-semibold flex text-sm text-[#858585] font-bold items-center min-w-[200px] md:w-fit justify-center text-center border border-[#F29254] bg-[#fff] relative focus:outline-none focus:ring-[#f5ac7c] focus:border-[#f5ac7c] cursor-pointer">
+            <img src={ApartmentIcon} className="mr-2" />
+            <select
+              id="location"
+              name="location"
+            >
+              <option value="" disabled selected className='!text-[#858585]'> Where do you want to stay?</option>
+              <option value="location1">Location 1</option>
+              <option value="location2">Location 2</option>
+              <option value="location3">Location 3</option>
+            </select>
+          </div>
+          <CheckInOutPicker className="min-w-[140px]" />
+          <GuestCountPicker className="min-w-[140px]" />
+          <div className='w-[220px] min-w-[140px]'>
+            <Button
+              text='Search'
+              onClick={goToBookingPage}
+            />
+          </div>
+        </div>
       </div>
       <div className='h-[368px] w-full bg-[#FDDAC4] flex flex-col justify-center items-center p-14 gap-4'>
-          <p className='text-lg text-[#AB4412] max-w-[872px] m-auto text-center'>We're here to help. Contact CharizHomes for inquiries, support, or more information about our services.</p>
-          <input className='rounded-full bg-[#fff] max-w-[676px] m-auto w-full px-10 py-4' placeholder='Enter Your Email'></input>
-          <button className='floating-button rounded-full bg-[#fff] text-[#F29254] font-bold max-w-[367px] m-auto w-full px-10 py-4 flex justify-center items-center'>Subscribe</button>
-        </div>
+        <p className='text-lg text-[#AB4412] max-w-[872px] m-auto text-center'>We're here to help. Contact CharizHomes for inquiries, support, or more information about our services.</p>
+        <input className='rounded-full bg-[#fff] max-w-[676px] m-auto w-full px-10 py-4' placeholder='Enter Your Email'></input>
+        <button className='floating-button rounded-full bg-[#fff] text-[#F29254] font-bold max-w-[367px] m-auto w-full px-10 py-4 flex justify-center items-center'>Subscribe</button>
+      </div>
     </div>
   )
 }

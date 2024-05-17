@@ -1,7 +1,8 @@
 import * as types from "./types";
 
 const initialState = {
-    loggedInUser : {}
+    loggedInUser : {},
+    listings: [],
 }
 
 const AuthReducer = (state = initialState, {type, payload}) => {
@@ -11,6 +12,12 @@ const AuthReducer = (state = initialState, {type, payload}) => {
                 ...state,
                 loggedInUser: payload
             };
+        case types.FETCH_LISTINGS_SUCCESS:
+            return {
+                ...state,
+                listings: payload
+            };
+
         default:
             return state;
     }

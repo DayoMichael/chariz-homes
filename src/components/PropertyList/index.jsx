@@ -11,7 +11,7 @@ import Slider from 'rc-slider';
 import 'rc-slider/assets/index.css';
 import { useEffect } from 'react';
 import { getPropertiesListing } from '../../redux/features/auth/actions';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import Loader from '../../library/Loader/Loader';
 import { useNavigate } from 'react-router-dom';
 
@@ -41,9 +41,11 @@ const CheckboxComponent = ({ name, count }) => {
 function PropertyList() {
     const navigate = useNavigate()
     const dispatch = useDispatch();
+    const listingsRedux = useSelector(state => state.authState.listings);
     const [value, setValue] = useState([0, 1000000]);
     const [loading, setLoading] = useState(true)
-    const [listings, setListings] = useState([])
+    const [listings, setListings] = useState(listingsRedux || [])
+
 
     const handleChange = (newValue) => {
         setValue(newValue);
@@ -108,7 +110,10 @@ function PropertyList() {
     }
 
     useEffect(() => {
-        fetchAllListings()
+        // if(listingsRedux?.length === 0){
+            fetchAllListings()
+        // }
+       
     },[])
 
     if(loading){
@@ -121,7 +126,7 @@ function PropertyList() {
                 <div className='flex flex-col w-full max-w-[90%] m-auto py-20 h-full'>
                     <div className='flex justify-between items-center'>
                         <div className=' w-1/3'>
-                        <img src={BackIcon} className="cursor-pointer" />
+                        <img src={BackIcon} className="cursor-pointer w-[50px]" onClick={() => navigate("/")} />
                         </div>
                        
                         <h2 className='text-4xl font-bold items-center text-center flex w-1/3'>{data?.length} Properties Found</h2>
@@ -172,7 +177,7 @@ function PropertyList() {
                                 </div>
                             </div>
                         </div>
-                        <div className='h-screen  col-span-1 md:col-span-3 w-full overflow-x-scroll'>
+                        <div className='h-screen  col-span-1 md:col-span-3 w-full'>
                             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                                 {listings.map(card => (
                                     <div key={card.id} className="rounded-3xl bg-white p-2 relative">
@@ -182,11 +187,11 @@ function PropertyList() {
                                             <h2 className="font-bold text-xl mb-2">{card.title}</h2>
                                             <h2 className="font-bold text-xl text-[#F29254] mb-1">N{card?.price}k/Night</h2>
                                             <p className='text-xs flex gap-2 mb-2'> 4 Reviews <img src={StarRatings} /></p>
-                                            <p className='text-xs flex gap-1'><img src={LocationIcons} /> Nigeria</p>
-                                            <div className='mt-4'>
+                                            <p className='text-[10px] flex gap-1 pb-6 mt-4'><img src={LocationIcons} /> Nigeria</p>
+                                            <div className='mt-2'>
                                             <button 
                                                 onClick={() => goToDetailsPage(card?.id)}
-                                                className='floating-button bg-[#F29254] px-16 py-2 rounded-3xl text-[#fff] text-center font-semibold flex text-md font-bold items-center cursor-pointer w-full justify-center'
+                                                className='floating-button bg-[#F29254] px-10 py-2 rounded-3xl text-[#fff] text-center font-semibold flex text-md font-bold items-center cursor-pointer w-full justify-center'
                                             >Check Availability</button>
                                             </div>
                                         </div>
