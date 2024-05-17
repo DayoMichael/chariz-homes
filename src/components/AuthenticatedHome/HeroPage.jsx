@@ -37,7 +37,7 @@ function HeroPage() {
                 </h4>
                 <p className='text-2xl'>Experience Comfort, Convenience, and Class with Our Tailored Services</p>
                 <button className='bg-[#F29254] px-6 py-2 rounded-3xl text-[#fff] text-center font-semibold flex text-xl font-bold items-center cursor-pointer'>Discover your perfect stay</button>
-                <div className='flex overflow-x-scroll w-full'>
+                <div className='flex w-full z-[10000px]'>
 
 
                     <div className='p-6 border border-[#F29254] w-full mt-28 rounded-full flex gap-8 justify-center bg-opacity-30 backdrop-filter backdrop-blur-lg min-w-[1400px] md:min-w-[1000px] md:w-fit'>
