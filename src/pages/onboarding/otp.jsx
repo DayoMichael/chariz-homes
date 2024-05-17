@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Cookies from "js-cookie"
 import OnboardingLayout from '../../layout/OnboardingLayout';
-import PINInput from '../../library/PinInput/PinInput';
+import PINInput from '../../library/PINInput/PINInput';
 import Button from '../../library/Button/Button';
 import { useNavigate } from 'react-router-dom';
 

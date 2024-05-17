@@ -3,7 +3,7 @@ import OnboardingLayout from '../../layout/OnboardingLayout';
 import Button from '../../library/Button/Button';
 import InputField from '../../library/InputField/InputField';
 import EmailIcon from '../../assets/la-icons/email-icon.svg';
-import PINInput from '../../library/PINInput/PINInput';
+
 
 function ResetPassword() {
     const [formData, setFormData] = useState({
