@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Cookies from "js-cookie"
 import OnboardingLayout from '../../layout/OnboardingLayout';
-import PINInput from '../../library/PINInput/PINInput';
+import PinInput from '../../library/Pin/Pin';
 import Button from '../../library/Button/Button';
 import { useNavigate } from 'react-router-dom';
 
@@ -50,7 +50,7 @@ function OTPView() {
                 <h2 className='text-2xl text-center text-[#F29254] font-semibold'>Enter Code</h2>
                 <p className='mt-4 text-center text-lg'>Enter the 6 digit code we sent to your email to reset your password</p>
                 <div className='mt-20'>
-                    <PINInput
+                    <PinInput
                         length={length}
                         onChange={setPin}
                     />

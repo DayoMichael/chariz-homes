@@ -5,32 +5,32 @@ import { getCall, postCall } from "../../../services/networking/apiCalls";
 
 export const loginUser = (requestData) => async (dispatch) => {
 	try {
-		dispatch({ type: types.CUSTOMER_LOGIN_STARTED });
+		// dispatch({ type: types.CUSTOMER_LOGIN_STARTED });
 		const response = await postCall(LoginUrl, requestData);
 		const { status_code, data } = response || {}
-		const showFailureToast = true;
-        if(status_code  === 200){
-            if(data && data?.success){
-                dispatch({ type: types.CUSTOMER_LOGIN_SUCCESS, payload: data });
-                return handleSuccess(data, "Logged in successfully", showFailureToast)
-            }
-            handleFailure(data?.message, showFailureToast);
-        }
-        handleFailure(data?.message, showFailureToast);
+		// const showFailureToast = true;
+        // if(status_code  === 200){
+        //     if(data && data?.success){
+        //         dispatch({ type: types.CUSTOMER_LOGIN_SUCCESS, payload: data });
+        //         return handleSuccess(data, "Logged in successfully", showFailureToast)
+        //     }
+        //     handleFailure(data?.message, showFailureToast);
+        // }
+        // handleFailure(data?.message, showFailureToast);
 	} catch (error) {
-		const { data } = error.response;
-		dispatch({ type: types.CUSTOMER_LOGIN_FAILED });
+		// const { data } = error.response;
+		// dispatch({ type: types.CUSTOMER_LOGIN_FAILED });
 
-		if (data?.message) {
-			handleFailure(data?.message, true);
-		} else {
-			genericFailure();
-		}
+		// if (data?.message) {
+		// 	handleFailure(data?.message, true);
+		// } else {
+		// 	genericFailure();
+		// }
 
-		return {
-			status: false,
-			data: data,
-		};
+		// return {
+		// 	status: false,
+		// 	data: data,
+		// };
 	}
 };
 
