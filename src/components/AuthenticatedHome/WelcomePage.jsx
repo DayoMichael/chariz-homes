@@ -86,7 +86,7 @@ function WelcomeSection() {
                                         <h2 className="font-bold text-xl mb-2">{card.name}</h2>
                                         <p className="font-bold text-base text-[#F29254] mb-1">N250k/Night</p>
                                         <p className='text-xs flex gap-2 mb-2'> 4 Reviews <img src={StarRatings} /></p>
-                                        <p className='text-[10px] flex gap-1 pb-6 mt-4'><img src={LocationIcons} /> Plot 217, Behind First Bank, Garki, Abuja.</p>
+                                        <p className='text-[10px] flex gap-1 mt-4'><img src={LocationIcons} /> Plot 217, Behind First Bank, Garki, Abuja.</p>
                                     </div>
                                 </div>
                             ))}
@@ -106,7 +106,7 @@ function WelcomeSection() {
                                         <h2 className="font-bold text-xl mb-2">{card.name}</h2>
                                         <p className="font-bold text-base text-[#F29254] mb-1">N250k/Night</p>
                                         <p className='text-xs flex gap-2 mb-2'> 4 Reviews <img src={StarRatings} /></p>
-                                        <p className='text-[10px] flex gap-1 pb-6 mt-4'><img src={LocationIcons} /> Plot 217, Behind First Bank, Garki, Abuja.</p>
+                                        <p className='text-[10px] flex gap-1 mt-4'><img src={LocationIcons} /> Plot 217, Behind First Bank, Garki, Abuja.</p>
                                     </div>
                                 </div>
                             ))}

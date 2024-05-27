@@ -4,7 +4,7 @@ import { styled } from 'styled-components';
 import eyeIcon from '../../assets/la-icons/eye-icon.svg';
 import eyeOffIcon from '../../assets/la-icons/eye-icon.svg';
 
-function InputField({ label, placeholder, value, onChange, labelCenter, labelClassname, showIcon, icon, type, ...rest }) {
+function InputField({ label, placeholder, value, onChange, labelCenter, labelClassname, showIcon, icon, type, className, ...rest }) {
     const [showPassword, setShowPassword] = useState(false);
 
     const togglePasswordVisibility = () => {
@@ -14,11 +14,11 @@ function InputField({ label, placeholder, value, onChange, labelCenter, labelCla
     return (
         <Styles>
             <div className='mt-4 w-full'>
-                <p className={`text-lg label ${labelClassname} ${labelCenter ? "text-center w-full" : ""}`}>{label}</p>
+                <p className={`text-sm label ${labelClassname} ${labelCenter ? "text-center w-full" : ""}`}>{label}</p>
                 <div className='flex w-full justify-between input-field items-center mt-2'>
                     {showIcon && <img src={icon} />}
                     <input
-                        className='w-full text-left ml-2'
+                        className={`w-full text-left ml-2 text-sm  ${className}`}
                         placeholder={placeholder}
                         value={value}
                         onChange={onChange}
@@ -50,7 +50,6 @@ const Styles = styled.div`
     }
     .label {
         color: #858585;
-        font-size: 16px;
         font-style: normal;
         font-weight: 600;
     }

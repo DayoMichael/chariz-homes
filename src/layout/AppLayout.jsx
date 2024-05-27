@@ -33,28 +33,32 @@ function AppLayout({ children }) {
     return (
         <div className='w-full h-full flex flex-col font-comfortaa '>
             <div className='w-full px-10 md:px-20 justify-center items-center flex fixed bg-[#fff] z-50 justify-between'> {/* Ensure this navbar is above other content */}
-                <div className='w-1/5'>
+                <div className='w-1/7'>
                     <img src={CharizHomesLogo} />
                 </div>
-                <div className='w-4/5 gap-40 flex items-center justify-end'>
-                    <div className='hidden xl:flex gap-8'>
+                <div className='w-5/7 gap-20 flex items-center justify-end'>
+                    <div className='hidden xl:flex gap-10'>
                         {nav.map((navItem, index) => (
                             <div
                                 key={index}
-                                className={` text-xs ${location?.pathname === navItem.link ? 'border-2 border-[#F29254] rounded-full px-4 py-2' : 'mt-2'} cursor-pointer`}
+                                className={` text-xs ${location?.pathname === navItem.link ? 'border-2 border-[#F29254] rounded-full px-4 py-2 text-[#F29254]' : 'mt-2'} cursor-pointer`}
                             >
-                                <a className={`${navItem.name === "Our App" ? 'text-[#F29254]' : 'text-[#000]' }` } onClick={() => goTo(navItem.link)}>
+                                <a className={`${navItem.name === "Our App" || location?.pathname === navItem.link ? 'text-[#F29254]' : 'text-[#000]' } text-xs` } onClick={() => goTo(navItem.link)}>
                                     {navItem.name}
                                 </a>
                             </div>
                         ))}
                     </div>
-                    {!loggedIn ?
+                    
+
+                </div>
+                <div className='w-1/7'>
+                {!loggedIn ?
                         <div className='flex gap-4 justify-end text-sm'>
-                            <button className='rounded-3xl border border-2 border-[#F29254] font-semibold text-lg py-2 px-8 text-[#F29254] flex justify-center items-center' onClick={() => goTo("/signup")}>
+                            <button className='rounded-3xl border border-2 border-[#F29254] font-semibold text-sm py-2 px-8 text-[#F29254] flex justify-center items-center' onClick={() => goTo("/signup")}>
                                 Sign up
                             </button>
-                            <button className='floating-button rounded-3xl bg-[#F29254] font-semibold text-lg py-2 px-8 text-[#fff] flex justify-center items-center' onClick={() => goTo("/login")}>
+                            <button className='floating-button rounded-3xl bg-[#F29254] font-semibold text-sm py-2 px-8 text-[#fff] flex justify-center items-center' onClick={() => goTo("/login")}>
                                 Login
                             </button>
                         </div>
@@ -63,7 +67,6 @@ function AppLayout({ children }) {
                             <img src={ProfileIcon} />
                         </div>
                     }
-
                 </div>
             </div>
             <div className='flex flex-col w-full'>

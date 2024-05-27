@@ -35,7 +35,7 @@ function PropertyView() {
             {loading ? <div className='mt-32'><Loader /></div> :
                 <div className='w-full flex flex-col'>
                     <HeroPage details={details} />
-                    <PropertyDetails details={details}/>
+                    <PropertyDetails details={details} paramValue={paramValue}/>
                 </div>
             }
         </AppLayout>

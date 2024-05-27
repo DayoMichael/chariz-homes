@@ -1,7 +1,7 @@
 import axios from "axios";
 import { deleteToken } from "../../utils/appConfig";
 
-const baseURL = "https://coffee-viper-hose.cyclic.app/";
+const baseURL = "https://sea-turtle-app-c6p3o.ondigitalocean.app/";
 
 const axiosInstance = axios.create({
 	baseURL: baseURL,

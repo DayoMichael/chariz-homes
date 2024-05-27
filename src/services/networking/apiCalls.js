@@ -18,7 +18,7 @@ export const postCall = async (url, data, params, headerConfig) => {
         ...params,
     };
     const response = await axiosInstance.post(url, finalData, config)
-    return response?.data || response
+    return response
 };
 
 
@@ -42,7 +42,7 @@ export const deleteCall = async (url, data) => {
     };
     // ENCRYPT DATA HERE
     const response = await axiosInstance.delete(url, config);
-    return response?.data || response;
+    return response;
 };
 
 export const authPutCall = async (url, data, params) => {
@@ -53,7 +53,7 @@ export const authPutCall = async (url, data, params) => {
         ...params,
     };
     const response =  await axiosInstance.put(url, data, config);
-    return response?.data || response
+    return response
 };
 
 export const authDeleteCall = async (url, data, params) => {
@@ -64,7 +64,7 @@ export const authDeleteCall = async (url, data, params) => {
         ...params,
     };
     const response = await axiosInstance.delete(url, config);
-    return response?.data || response
+    return response
 };
 
 

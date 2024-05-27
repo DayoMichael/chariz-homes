@@ -121,7 +121,9 @@ function Header() {
 
                     </div>
                     <div className='mt-10'>
-                        <h2 className='text-[#F29254]'>Reserve your stay</h2>
+                        <div className='flex justify-center'>
+                            <h2 className='text-[#F29254] font-bold text-xl'>Reserve your stay</h2>
+                        </div>
                         <div className='w-full rounded-2xl p-4 flex flex-col bg-[#fff] mt-2'>
                             <div className='rounded-full w-full px-6 py-2 flex bg-[#ECECEC] gap-6'>
                                 <p className='w-[25%]'>Apartment</p>

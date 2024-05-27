@@ -36,7 +36,7 @@ function HeroPage() {
                     Your Home for Luxury Short Stays and More
                 </h4>
                 <p className='text-2xl'>Experience Comfort, Convenience, and Class with Our Tailored Services</p>
-                <div className='flex w-full z-[10000px]'>
+                <div className='flex w-full z-[10000px] justify-center'>
 
 
                     <div className='p-6 border border-[#F29254] w-full mt-28 rounded-full flex gap-8 justify-center bg-opacity-30 backdrop-filter backdrop-blur-lg min-w-[1400px] md:min-w-[1000px] md:w-fit'>

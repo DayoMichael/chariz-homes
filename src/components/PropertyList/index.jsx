@@ -184,11 +184,11 @@ function PropertyList() {
                                         <img src={card.imageSrc} alt={card.title} className="w-full h-[205px] object-cover rounded-2xl" />
                                         <img src={LoveIcon} alt={"like"} className=" absolute right-4 top-4" />
                                         <div className="py-4 px-2">
-                                            <h2 className="font-bold text-xl mb-2">{card.title}</h2>
-                                            <h2 className="font-bold text-xl text-[#F29254] mb-1">N{card?.price}k/Night</h2>
-                                            <p className='text-xs flex gap-2 mb-2'> 4 Reviews <img src={StarRatings} /></p>
-                                            <p className='text-[10px] flex gap-1 pb-6 mt-4'><img src={LocationIcons} /> Nigeria</p>
-                                            <div className='mt-2'>
+                                            <h2 className="font-bold text-md mb-1">{card.title}</h2>
+                                            <h2 className="font-bold text-md text-[#F29254] mb-1">N{card?.price}k/Night</h2>
+                                            <p className='text-xs flex gap-2 mt-2'> 4 Reviews <img src={StarRatings} /></p>
+                                            <p className='text-[10px] flex gap-1 pb-6 mt-2'><img src={LocationIcons} /> Nigeria</p>
+                                            <div className='mt-1'>
                                             <button 
                                                 onClick={() => goToDetailsPage(card?.id)}
                                                 className='floating-button bg-[#F29254] px-10 py-2 rounded-3xl text-[#fff] text-center font-semibold flex text-md font-bold items-center cursor-pointer w-full justify-center'

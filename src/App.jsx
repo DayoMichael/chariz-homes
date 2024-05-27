@@ -13,6 +13,10 @@ import ResetSuccessful from "./pages/onboarding/resetsuccessfull";
 import BookStay from "./pages/bookStay";
 import PropertyManagement from "./pages/PropertyManagement";
 import PropertyType from "./pages/PropertyType";
+import PropertyRequestView from "./pages/PropertyRequest";
+import PropertyDashboardView from "./pages/PropertyDashboard";
+import PropertySubmissionView from "./pages/PropertySubmission";
+import PropertyAnalyticsView from "./pages/PropertAnalytics";
 
 function App() {
 
@@ -24,6 +28,10 @@ function App() {
         <Route path="/properties" element={<PropertyListView />} />
         <Route path="/property-management" element={<PropertyManagement />} />
         <Route path="/property-view" element={<PropertyView />} />
+        <Route path="/property-request" element={<PropertyRequestView />} />
+        <Route path="/property-dashboard" element={<PropertyDashboardView />} />
+        <Route path="/property-submission" element={<PropertySubmissionView />} />
+        <Route path="/property-analytics" element={<PropertyAnalyticsView />} />
         <Route path="/property-type" element={<PropertyType />} />
         <Route path="/book-stay" element={<BookStay />} />
         <Route path="/signup" element={<Signup />}/>

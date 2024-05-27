@@ -11,7 +11,7 @@ import ApartmentIcon from '../../assets/la-icons/apartment-icon.svg'
 import Button from '../../library/Button/Button';
 import { useNavigate } from 'react-router-dom';
 
-function PropertyDetails({ details }) {
+function PropertyDetails({ details, paramValue }) {
   const navigate = useNavigate()
   const [selectedFeat, setSelectedFeat] = useState("Homes")
   const features = [
@@ -59,7 +59,7 @@ function PropertyDetails({ details }) {
     { ReviewProfileImage: ReviewProfileImage, name: 'Jon Snow', StarRatings: 'star_ratings_url_4.jpg', description: 'This charming apartment offers a cozy feel with 3 bedrooms and This charming apartment offers a cozy feel with 3 bedrooms and' }
   ];
 
-  const goToBookingPage = () => navigate("/properties")
+  const goToBookingPage = () => navigate(`/book-stay?id=${paramValue}`)
   return (
     <div className='bg-[#ECECEC]'>
       <div className='flex flex-col w-full max-w-[90%] m-auto py-20'>
@@ -143,18 +143,17 @@ function PropertyDetails({ details }) {
             </ul>
           </div>
         </div>
-        <div className='p-6 border border-[#F29254] w-full mt-28 rounded-full flex gap-8 justify-center bg-opacity-30 backdrop-filter backdrop-blur-lg min-w-[1400px] md:min-w-[1000px] md:w-fit'>
+        <div className='p-6 border border-[#F29254] w-full mt-28 rounded-full flex gap-8 justify-center bg-opacity-30 backdrop-filter backdrop-blur-lg min-w-[1400px] md:min-w-[1000px] md:w-fit m-auto'>
           <div className="px-6 py-4 shadow-sm rounded-full text-center font-semibold flex text-sm text-[#858585] font-bold items-center min-w-[200px] md:w-fit justify-center text-center border border-[#F29254] bg-[#fff] relative focus:outline-none focus:ring-[#f5ac7c] focus:border-[#f5ac7c] cursor-pointer">
             <img src={ApartmentIcon} className="mr-2" />
-            <select
+            <div
               id="location"
               name="location"
+              className='min-w-[140px]'
             >
-              <option value="" disabled selected className='!text-[#858585]'> Where do you want to stay?</option>
-              <option value="location1">Location 1</option>
-              <option value="location2">Location 2</option>
-              <option value="location3">Location 3</option>
-            </select>
+              <span value="" disabled selected className='!text-[#858585] text-left '>{details?.title} </span>
+              
+            </div>
           </div>
           <CheckInOutPicker className="min-w-[140px]" />
           <GuestCountPicker className="min-w-[140px]" />

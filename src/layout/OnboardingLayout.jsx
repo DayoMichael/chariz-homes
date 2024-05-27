@@ -20,7 +20,7 @@ function OnboardingLayout({children, text, link}) {
         <div className='w-full p-6 md:p-14 h-full flex gap-10'>
             <div className='hidden w-1/2 md:flex flex-col justify-center align-center  h-full'>
                 <img src={CharizLogo} className="w-[270px] h-[270px]"/>
-                <h6 className='text-6xl font-normal leading-normal'>
+                <h6 className='text-5xl font-normal leading-normal'>
                     Your Home for luxury short stays
                 </h6>
                 <p onClick={goTo}className='teext-xl font-bold cursor-pointer text-[#F29254] mt-20'>Back to {text}</p>

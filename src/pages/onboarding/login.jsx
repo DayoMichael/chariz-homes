@@ -6,10 +6,14 @@ import EmailIcon from '../../assets/la-icons/email-icon.svg';
 import LockIcon from '../../assets/la-icons/lock-icon.svg';
 import Button from '../../library/Button/Button';
 import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { loginUser } from '../../redux/features/auth/actions';
 
 function Login() {
+    const dispatch = useDispatch()
     const navigate = useNavigate()
     const [email, setEmail] = useState('');
+    const [loading, setLoading] = useState(false)
     const [password, setPassword] = useState('');
     const [emailError, setEmailError] = useState('');
     const [passwordError, setPasswordError] = useState('');
@@ -36,6 +40,21 @@ function Login() {
         return /\S+@\S+\.\S+/.test(email);
     };
 
+    const handleLogin = async ()  => {
+        const payload = {
+            email,
+            password,
+        }
+        setLoading(true)
+        const {status, data} = await dispatch(loginUser(payload))
+        setLoading(false)
+        if(status){
+            Cookies.set("LacharizToken", JSON.stringify(data?.accessToken))
+            Cookies.set("LacharizUserData", JSON.stringify(data?.user))
+            navigate("/")
+        }
+    }
+
     const validatePassword = (password) => {
         // Password validation (example: minimum length of 6 characters)
         return password.length >= 6;
@@ -47,11 +66,12 @@ function Login() {
 
     return (
         <OnboardingLayout link="/" text={"home"}>
-            <div className='border-2 border-[#F29254] h-full rounded-3xl w-full bg-opacity-30 backdrop-filter backdrop-blur-lg justify-center px-12 py-16'>
-                <h2 className='text-2xl text-center text-[#F29254] font-semibold'>Login</h2>
-                <p className='mt-4 text-center text-lg'>Hey there, pick up where you left off</p>
+            <div className='border-2 border-[#F29254] h-full rounded-3xl w-full bg-opacity-30 backdrop-filter backdrop-blur-lg justify-center px-10 py-12 max-w-[500px]'>
+                <h2 className='text-xl text-center text-[#F29254] font-semibold'>Login</h2>
+                <p className='mt-4 text-center text-sm'>Hey there, pick up where you left off</p>
                 <div className='mt-8 flex flex-col gap-4'>
                     <InputField
+                        className={"text-sm"}
                         label={"Enter your email"}
                         name="email"
                         type="text"
@@ -63,6 +83,7 @@ function Login() {
                     />
                     {emailError && <p className="text-red-500 text-sm">{emailError}</p>}
                     <InputField
+                        className={"text-sm"}
                         label={"Password"}
                         name="password"
                         type="password"
@@ -78,12 +99,13 @@ function Login() {
                     <div className='max-w-[70%] m-auto'>
                         <Button
                             text='Login'
+                            loading={loading}
                             disabled={!isFormValid()}
-                            onClick={goToDashboard}
+                            onClick={handleLogin}
                         />
-                        <p className='text-lg text-[#F29254] text-center mt-4 cursor-pointer'>Forgot Password</p>
+                        <p className='text-sm text-[#F29254] text-center mt-2 cursor-pointer'>Forgot Password</p>
                     </div>
-                    <p className='text-lg text-center mt-16'>  Don't have an account? <span className='text-[#F29254] cursor-pointer'>Signup</span> instead</p>
+                    <p className='text-sm text-center mt-16'>  Don't have an account? <span className='text-[#F29254] cursor-pointer' onClick={() => navigate("/signup")}>Signup</span> instead</p>
                 </div>
             </div>
         </OnboardingLayout>

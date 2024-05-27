@@ -25,7 +25,7 @@ const PinInput = ({ label, length, onChange }) => {
     return (
         <Styles>
             <div className='mt-4 w-full'>
-                <p className='text-lg label'>{label}</p>
+                <p className='text-sm label'>{label}</p>
                 <div className='flex w-full gap-6 input-field justify-center items-center mt-2'>
                     {otp.map((digit, index) => (
                         <input

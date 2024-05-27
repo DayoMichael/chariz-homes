@@ -21,6 +21,7 @@ export default {
         'visionImage': 'url(https://res.cloudinary.com/dayomichael/image/upload/v1715935780/our-vision-image_uszyad.svg)',
         'justForYou': 'url(https://res.cloudinary.com/dayomichael/image/upload/v1715935819/just-for-you-image_iquh7d.svg)',
         "propertyView": 'url(https://res.cloudinary.com/dayomichael/image/upload/v1715935856/property-view_lndbsn.svg)',
+        'propertyManagement': 'url(https://res.cloudinary.com/dayomichael/image/upload/v1716444927/Group_427319215_od29iw.svg)',
       }
     },
     letterSpacing: {
