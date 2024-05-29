@@ -12,7 +12,7 @@ export const postCall = async (url, data, params, headerConfig) => {
 
     const config = {
         headers: {
-            Authorization: `Bearer ${token}`,
+            accessToken: `${token}`,
             ...headerConfig,
         },
         ...params,
@@ -26,7 +26,7 @@ export const postCall = async (url, data, params, headerConfig) => {
 export const getCall = async (url, params) => {
     const config = {
         headers: {
-            Authorization: `Bearer ${getToken()}`,
+            accessToken: `${getToken()}`,
         },
         ...params,
     };
@@ -37,7 +37,7 @@ export const getCall = async (url, params) => {
 export const deleteCall = async (url, data) => {
     const config = {
         headers: {
-            Authorization: `Bearer ${getToken()}`,
+            accessToken: `${getToken()}`,
         },
         data: data || {},
     };
@@ -49,7 +49,7 @@ export const deleteCall = async (url, data) => {
 export const authPutCall = async (url, data, params) => {
     const config = {
         headers: {
-            Authorization: `Bearer ${getToken()}`,
+            accessToken: `${getToken()}`,
         },
         ...params,
     };
@@ -60,7 +60,7 @@ export const authPutCall = async (url, data, params) => {
 export const authDeleteCall = async (url, data, params) => {
     const config = {
         headers: {
-            Authorization: `Bearer ${getToken()}`,
+            accessToken: `${getToken()}`,
         },
         ...params,
     };
@@ -72,7 +72,7 @@ export const authDeleteCall = async (url, data, params) => {
 export const getRequest = async ({ url }) => {
     const config = {
         headers: {
-            Authorization: `Bearer ${getToken()}`,
+            accessToken: `${getToken()}`,
         },
     };
     // ENCRYPT DATA HERE
@@ -83,7 +83,7 @@ export const getRequest = async ({ url }) => {
 export const postFormCall = async (url, data, params, headerConfig) => {
     const config = {
         headers: {
-            Authorization: `Bearer ${getToken()}`,
+            accessToken: `${getToken()}`,
             ...headerConfig,
         },
         ...params,
@@ -95,7 +95,7 @@ export const postFormCall = async (url, data, params, headerConfig) => {
 export const putFormCall = async (url, data) => {
     const config = {
         headers: {
-            Authorization: `Bearer ${getToken()}`,
+            accessToken: `${getToken()}`,
         },
     };
     // ENCRYPT DATA HERE

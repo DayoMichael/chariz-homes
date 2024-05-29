@@ -16,18 +16,21 @@ import TourIcon from '../../assets/la-icons/tour-icon.svg';
 import TourismIcon from '../../assets/la-icons/tourism-icon.svg';
 import CateringIcon from '../../assets/la-icons/catering-icon.svg';
 import BusIcon from '../../assets/la-icons/bus-icon.svg';
+import BookSuccessImage from '../../assets/la-images/booking-success-image.svg';
 import Button from '../../library/Button/Button';
 import Footer from '../Footer';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { formatDay, formatMoney, getDayDifference } from '../../utils';
 import { apartmentBooking } from '../../redux/features/auth/actions';
+import Modal from '../../library/Modal/Modal';
 
 
 function Header() {
     const dispatch = useDispatch()
     const navigate = useNavigate()
     const [rooms, setRooms] = useState(1);
+    const [openModal, setOpenModal] = useState(false)
     const [loading, setLoading] = useState(false)
     const { propertyInView, bookingParam } = useSelector(state => state.authState)
     const [selectedServices, setSelectedServices] = useState([])
@@ -45,6 +48,8 @@ function Header() {
             setRooms(value);
         }
     };
+
+    const goHome = () => navigate("/")
 
     const additionalServices = [
         {
@@ -110,7 +115,7 @@ function Header() {
         const {status, data} = await dispatch(apartmentBooking(payload))
         setLoading(false)
         if(status){
-            navigate("/")
+           setOpenModal(true)
         }
     }
 
@@ -268,6 +273,7 @@ function Header() {
                     </div>
                     <div className='flex w-full max-w-[250px] mt-10 m-auto'>
                         <Button
+                            disabled={!startDate || !endDate}
                             loading={loading}
                             text={"Book"}
                             onClick={bookApartment}
@@ -278,6 +284,12 @@ function Header() {
                 </div>
             </div>
             <Footer />
+            <Modal isOpen={openModal} onClose={() => setOpenModal(false)}>
+                <div className='flex  gap-10 flex-col p-10 justify-center max-w-[400px] m-auto'>
+                    <img src={BookSuccessImage} className={""}/>
+                    <div><Button text={"Done"} onClick={goHome}/></div>
+                </div>
+            </Modal>
         </Styled>
     )
 }

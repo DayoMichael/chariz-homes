@@ -179,8 +179,7 @@ function PropertyDetails({ details, paramValue }) {
           <GuestCountPicker adults={adults} children={children} rooms={rooms} setAdults={(item) => setAdults(item)} setRooms={(item) => setRooms(item)} setChildren={(item) =>  setChildren(item)}className="min-w-[140px]" />
           <div className='w-[220px] min-w-[140px]'>
             <Button
-              disabled={!startDate || !endDate ||  !rooms }
-              text='Book'
+              text='search'
               onClick={goToBookingPage}
             />
           </div>

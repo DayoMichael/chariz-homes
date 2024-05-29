@@ -9,6 +9,11 @@ import GuestCountPicker from '../../library/GuestCountPicker/GuestCountPicker'
 function HeroPage() {
     const navigate = useNavigate()
     const [selectedFeat, setSelectedFeat] = useState("Homes")
+    const [startDate, setStartDate] = useState( null);
+    const [endDate, setEndDate] = useState(null);
+    const [adults, setAdults] = useState(1);
+    const [children, setChildren] = useState(0);
+    const [rooms, setRooms] = useState(1);
     const features = [
         {
             id: "homes",
@@ -52,8 +57,8 @@ function HeroPage() {
                                 <option value="location3">Location 3</option>
                             </select>
                         </div>
-                        <CheckInOutPicker className="min-w-[140px]"/>
-                        <GuestCountPicker className="min-w-[140px]"/>
+                        <CheckInOutPicker startDate={startDate} endDate={endDate} setStartDate={(date) => setStartDate(date)} setEndDate={(date) => setEndDate(date)} className="min-w-[140px]" />
+                        <GuestCountPicker adults={adults} children={children} rooms={rooms} setAdults={(item) => setAdults(item)} setRooms={(item) => setRooms(item)} setChildren={(item) => setChildren(item)} className="min-w-[140px]" />
                         <div className='w-[220px] min-w-[140px]'>
                             <Button
                                 text='Search'
