@@ -1,155 +1,231 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { IoIosArrowDown, IoIosArrowUp } from 'react-icons/io';
 import ProfileIcon from "../../assets/la-icons/profile-icon.svg";
+import styled from 'styled-components';
 
-function GuestCountPicker({adults, children, rooms, setAdults, setChildren, setRooms}) {
-    const [isOpen, setIsOpen] = useState(false);
-    const dropdownRef = useRef(null);
+const StyledDropdown = styled.div`
+  position: relative;
 
-    const toggleDropdown = () => {
-        setIsOpen(!isOpen);
+  .dropdown-button {
+    padding: 1rem 1.5rem;
+    border: 1px solid #F29254;
+    border-radius: 9999px;
+    background-color: #fff;
+    color: #858585;
+    font-weight: bold;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    transition: all 0.3s ease;
+  }
+
+  .dropdown-content {
+    position: absolute;
+    top: calc(100% + 10px);
+    left: 0;
+    width: 100%;
+    background-color: #fff;
+    border: 1px solid #F29254;
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    z-index: 10;
+    display: ${({ isOpen }) => (isOpen ? 'block' : 'none')};
+  }
+
+  .dropdown-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.75rem 1.5rem;
+    font-weight: bold;
+    color: #858585;
+    border-bottom: 1px solid #F29254;
+    cursor: pointer;
+  }
+
+  .dropdown-item:last-child {
+    border-bottom: none;
+  }
+
+  .arrow-icon {
+    color: #858585;
+    transition: transform 0.3s ease;
+  }
+
+  .arrow-icon.rotate {
+    transform: rotate(180deg);
+  }
+
+  .counter-button {
+    background-color: #F29254;
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    width: 2rem;
+    height: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+
+  .counter-button:hover {
+    background-color: #f5ac7c;
+  }
+`;
+
+function GuestCountPicker({ adults, children, rooms, setAdults, setChildren, setRooms }) {
+  const [isOpen, setIsOpen] = useState(false);
+  const dropdownRef = useRef(null);
+
+  const toggleDropdown = () => {
+    setIsOpen(!isOpen);
+  };
+
+  const handleAdultChange = (e) => {
+    const value = parseInt(e.target.value);
+    if (!isNaN(value) && value >= 0) {
+      setAdults(value);
+    }
+  };
+
+  const handleChildrenChange = (e) => {
+    const value = parseInt(e.target.value);
+    if (!isNaN(value) && value >= 0) {
+      setChildren(value);
+    }
+  };
+
+  const handleRoomsChange = (e) => {
+    const value = parseInt(e.target.value);
+    if (!isNaN(value) && value >= 0) {
+      setRooms(value);
+    }
+  };
+
+  const incrementCount = (type) => {
+    if (type === 'adults') {
+      setAdults(adults + 1);
+    } else if (type === 'children') {
+      setChildren(children + 1);
+    } else if (type === 'rooms') {
+      setRooms(rooms + 1);
+    }
+  };
+
+  const decrementCount = (type) => {
+    if (type === 'adults' && adults > 1) {
+      setAdults(adults - 1);
+    } else if (type === 'children' && children > 0) {
+      setChildren(children - 1);
+    } else if (type === 'rooms' && rooms > 1) {
+      setRooms(rooms - 1);
+    }
+  };
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setIsOpen(false);
+      }
     };
 
-    const handleAdultChange = (e) => {
-        const value = parseInt(e.target.value);
-        if (!isNaN(value) && value >= 0) {
-            setAdults(value);
-        }
+    document.addEventListener('click', handleClickOutside);
+
+    return () => {
+      document.removeEventListener('click', handleClickOutside);
     };
+  }, []);
 
-    const handleChildrenChange = (e) => {
-        const value = parseInt(e.target.value);
-        if (!isNaN(value) && value >= 0) {
-            setChildren(value);
-        }
-    };
-
-    const handleRoomsChange = (e) => {
-        const value = parseInt(e.target.value);
-        if (!isNaN(value) && value >= 0) {
-            setRooms(value);
-        }
-    };
-
-    const incrementCount = (type) => {
-        if (type === 'adults') {
-            setAdults(adults + 1);
-        } else if (type === 'children') {
-            setChildren(children + 1);
-        } else if (type === 'rooms') {
-            setRooms(rooms + 1);
-        }
-    };
-
-    const decrementCount = (type) => {
-        if (type === 'adults' && adults > 1) {
-            setAdults(adults - 1);
-        } else if (type === 'children' && children > 0) {
-            setChildren(children - 1);
-        } else if (type === 'rooms' && rooms > 1) {
-            setRooms(rooms - 1);
-        }
-    };
-
-    useEffect(() => {
-        const handleClickOutside = (event) => {
-            if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
-                setIsOpen(false);
-            }
-        };
-
-        document.addEventListener('click', handleClickOutside);
-
-        return () => {
-            document.removeEventListener('click', handleClickOutside);
-        };
-    }, []);
-
-    return (
-        <div className="relative" ref={dropdownRef}>
+  return (
+    <StyledDropdown isOpen={isOpen} ref={dropdownRef}>
+      <button className="dropdown-button" onClick={toggleDropdown}>
+        <img src={ProfileIcon} className="mr-2" alt="Profile Icon" />
+        {adults} Adult, {children} Child, {rooms} Room
+        <IoIosArrowDown className={`arrow-icon ${isOpen ? 'rotate' : ''}`} />
+      </button>
+      <div className="dropdown-content">
+        <div className="dropdown-item">
+          <div className='w-[70%] flex justify-between'>
+            <span className='w-[90%]'>Adults</span>
+            <input
+              type="number"
+              value={adults}
+              onChange={handleAdultChange}
+              className=" w-12 text-center"
+            />
+          </div>
+          <div className="flex items-center w-[30%] gap-2">
             <button
-                className="px-6 py-4 shadow-sm rounded-full text-center font-semibold flex text-sm text-[#858585] font-bold items-center min-w-[200px] justify-center text-center border border-[#F29254] bg-[#fff] relative focus:outline-none focus:ring-[#f5ac7c] focus:border-[#f5ac7c] cursor-pointer w-full"
-                onClick={toggleDropdown}
+              className="counter-button"
+              onClick={() => decrementCount('adults')}
             >
-                <img src={ProfileIcon} className="mr-2"/>
-                {adults} Adult, {children} Child, {rooms} Room
-                
+              <IoIosArrowDown size={10} />
             </button>
-            {isOpen && (
-                <div className="px-4 py-6 absolute w-full z-10 top-full left-0 bg-white border border-[#F29254] rounded-md mt-2 shadow-md gap-4 flex flex-col">
-                    <div className="flex items-center m">
-                        <input
-                            type="number"
-                            className="appearance-none bg-transparent w-14 text-center focus:outline-none border border-[#000000] rounded-lg justify-center align-center"
-                            value={adults}
-                            onChange={handleAdultChange}
-                        />
-                        <span className="mx-2">Adults</span>
-                        <div className="flex items-center ml-auto gap-2">
-                            <button
-                                className="bg-[#F29254] text-white rounded-full w-6 h-6 flex justify-center items-center"
-                                onClick={() => decrementCount('adults')}
-                            >
-                                <IoIosArrowDown />
-                            </button>
-                            <button
-                                className="bg-[#F29254] text-white rounded-full w-6 h-6 flex justify-center items-center"
-                                onClick={() => incrementCount('adults')}
-                            >
-                                <IoIosArrowUp />
-                            </button>
-                        </div>
-                    </div>
-                    <div className="flex items-center">
-                        <input
-                            type="number"
-                            className="appearance-none bg-transparent w-14 text-center focus:outline-none border border-[#000000] rounded-lg justify-center align-center "
-                            value={children}
-                            onChange={handleChildrenChange}
-                        />
-                        <span className="mx-2">Children</span>
-                        <div className="flex items-center ml-auto gap-2">
-                            <button
-                                className="bg-[#F29254] text-white rounded-full w-6 h-6 flex justify-center items-center"
-                                onClick={() => decrementCount('children')}
-                            >
-                                <IoIosArrowDown />
-                            </button>
-                            <button
-                                className="bg-[#F29254] text-white rounded-full w-6 h-6 flex justify-center items-center"
-                                onClick={() => incrementCount('children')}
-                            >
-                                <IoIosArrowUp />
-                            </button>
-                        </div>
-                    </div>
-                    <div className="flex items-center">
-                        <input
-                            type="number"
-                            className="appearance-none bg-transparent w-14 text-center focus:outline-none border border-[#000000] rounded-lg justify-center align-center"
-                            value={rooms}
-                            onChange={handleRoomsChange}
-                        />
-                        <span className="mx-2">Rooms</span>
-                        <div className="flex items-center ml-auto gap-2">
-                            <button
-                                className="bg-[#F29254] text-white rounded-full w-6 h-6 flex justify-center items-center"
-                                onClick={() => decrementCount('rooms')}
-                            >
-                                <IoIosArrowDown />
-                            </button>
-                            <button
-                                className="bg-[#F29254] text-white rounded-full w-6 h-6 flex justify-center items-center"
-                                onClick={() => incrementCount('rooms')}
-                            >
-                                <IoIosArrowUp />
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            )}
+            <button
+              className="counter-button"
+              onClick={() => incrementCount('adults')}
+            >
+              <IoIosArrowUp size={10} />
+            </button>
+          </div>
         </div>
-    );
+        <div className="dropdown-item">
+          <div className='w-[70%] flex justify-between'>
+            <span className='w-[90%]'>Children</span>
+            <input
+              type="number"
+              value={children}
+              onChange={handleChildrenChange}
+              className="w-12 text-center"
+            />
+          </div>
+          <div className="flex items-center w-[30%] gap-2">
+            <button
+              className="counter-button"
+              onClick={() => decrementCount('children')}
+            >
+              <IoIosArrowDown size={10} />
+            </button>
+            <button
+              className="counter-button"
+              onClick={() => incrementCount('children')}
+            >
+              <IoIosArrowUp size={10} />
+            </button>
+          </div>
+        </div>
+        <div className="dropdown-item">
+          <div className='w-[70%] flex justify-between'>
+            <span className='w-[90%]'>Rooms</span>
+            <input
+              type="number"
+              value={rooms}
+              onChange={handleRoomsChange}
+              className=" w-12 text-center"
+            />
+          </div>
+          <div className="flex items-center w-[30%] gap-2">
+            <button
+              className="counter-button"
+              onClick={() => decrementCount('rooms')}
+            >
+              <IoIosArrowDown size={10} />
+            </button>
+            <button
+              className="counter-button"
+              onClick={() => incrementCount('rooms')}
+            >
+              <IoIosArrowUp size={10} />
+            </button>
+          </div>
+        </div>
+      </div>
+    </StyledDropdown>
+  );
 }
 
 export default GuestCountPicker;
