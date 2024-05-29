@@ -1,6 +1,6 @@
 import React from 'react';
 import AppLayout from '../layout/AppLayout';
-import Header from '../components/BookStay/Header';
+import Header from '../components/BookStay';
 
 function BookStay() {
   return (

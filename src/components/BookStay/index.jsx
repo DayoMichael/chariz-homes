@@ -18,12 +18,26 @@ import CateringIcon from '../../assets/la-icons/catering-icon.svg';
 import BusIcon from '../../assets/la-icons/bus-icon.svg';
 import Button from '../../library/Button/Button';
 import Footer from '../Footer';
+import { useDispatch, useSelector } from 'react-redux';
+import { useEffect } from 'react';
+import { formatDay, formatMoney, getDayDifference } from '../../utils';
+import { apartmentBooking } from '../../redux/features/auth/actions';
 
 
 function Header() {
+    const dispatch = useDispatch()
     const navigate = useNavigate()
     const [rooms, setRooms] = useState(1);
+    const [loading, setLoading] = useState(false)
+    const { propertyInView, bookingParam } = useSelector(state => state.authState)
     const [selectedServices, setSelectedServices] = useState([])
+    const [startDate, setStartDate] = useState(bookingParam?.startDate || null);
+    const [endDate, setEndDate] = useState(bookingParam?.endDate ||null);
+    const [adults, setAdults] = useState(bookingParam?.adults || 1);
+    const [children, setChildren] = useState(bookingParam?.children || 0);
+    const totalResident = adults + children 
+    const dayDifference = getDayDifference(startDate, endDate)
+
     const list = ["Entire apartment", "74 m", "Private Kitchen", "Balcony", "Sea view", "Lake view", "Garden view", "Pool View", "Pool with a view", "Inner courtyard view", "Air Conditioning", "Patio", "Dish washer", "Flat-screen Tv"]
     const handleRoomsChange = (e) => {
         const value = parseInt(e.target.value);
@@ -31,6 +45,7 @@ function Header() {
             setRooms(value);
         }
     };
+
     const additionalServices = [
         {
             id: 1,
@@ -84,12 +99,34 @@ function Header() {
         }
     }
 
+    const bookApartment = async () => {
+        const payload = {
+            totalPrice: propertyInView?.price * 1000 * parseInt(rooms) * dayDifference,
+            startDate: startDate.toISOString(),
+            endDate: endDate.toISOString(),
+            listingId: propertyInView?.id
+        }
+        setLoading(true)
+        const {status, data} = await dispatch(apartmentBooking(payload))
+        setLoading(false)
+        if(status){
+            navigate("/")
+        }
+    }
+
+    useEffect(() => {
+        if(!propertyInView?.title){
+            navigate("/properties")
+        }
+
+    }, [propertyInView])
+
     return (
         <Styled>
             <div className='bg-[#ECECEC] mt-20 min-h-screen'>
                 <div className='flex flex-col w-full max-w-[90%] m-auto py-20 h-full'>
                     <div className='flex justify-between'>
-                        <img src={BackIcon} className="cursor-pointer" onClick={() => navigate("/")}/>
+                        <img src={BackIcon} className="cursor-pointer w-[60px]" onClick={() => navigate("/")} />
                         <h2 className='text-4xl font-bold items-center text-center flex'>Book your stay</h2>
                         <div className='gap-6 opacity-0 border border-[#F29254] px-6 py-2 items-center justify-center bg-[#fff] rounded-full h-fit'>
                         </div>
@@ -97,24 +134,23 @@ function Header() {
                     <div className='mt-10'>
                         <div className='p-6 gap-8 flex  border border-[#F29254] w-full mt-28 rounded-full flex justify-between bg-opacity-30 backdrop-filter backdrop-blur-lg w-full'>
                             <div className='w-full'>
-                                <div className="px-6 py-4 shadow-sm rounded-full text-center font-semibold flex text-sm text-[#858585] font-bold items-center min-w-[200px] justify-center text-center border border-[#F29254] bg-[#fff] relative focus:outline-none focus:ring-[#f5ac7c] focus:border-[#f5ac7c] cursor-pointer">
+                                <div className="w-full px-6 py-4 shadow-sm rounded-full text-center font-semibold flex text-sm text-[#858585] font-bold items-center min-w-[200px] md:w-full justify-center text-center border border-[#F29254] bg-[#fff] relative focus:outline-none focus:ring-[#f5ac7c] focus:border-[#f5ac7c] cursor-pointer">
                                     <img src={ApartmentIcon} className="mr-2" />
-                                    <select
+                                    <div
                                         id="location"
                                         name="location"
+                                        className='min-w-[140px]'
                                     >
-                                        <option value="" disabled selected className='!text-[#858585]'> Where do you want to stay?</option>
-                                        <option value="location1">Location 1</option>
-                                        <option value="location2">Location 2</option>
-                                        <option value="location3">Location 3</option>
-                                    </select>
+                                        <span value="" disabled selected className='!text-[#858585] text-left '>{propertyInView?.title} </span>
+
+                                    </div>
                                 </div>
                             </div>
                             <div className='w-full'>
-                                <CheckInOutPicker />
+                                <CheckInOutPicker startDate={startDate} endDate={endDate} setStartDate={(date) => setStartDate(date)} setEndDate={(date) => setEndDate(date)} className="min-w-[140px]" />
                             </div>
                             <div className='w-full'>
-                                <GuestCountPicker />
+                                <GuestCountPicker adults={adults} children={children} rooms={rooms} setAdults={(item) => setAdults(item)} setRooms={(item) => setRooms(item)} setChildren={(item) => setChildren(item)} className="min-w-[140px]" />
                             </div>
 
                         </div>
@@ -133,22 +169,23 @@ function Header() {
                             </div>
                             <div className='w-full flex mt-10 gap-4'>
                                 <div className='w-[25%]  border-r border-[#F29254] p-2'>
-                                    <p>Birdy Chip Apartments</p>
+                                    <p>{propertyInView?.title}</p>
                                     <div className='mt-4 gap-2 flex flex-col'>
-                                        {list && list.map(item => (
+                                        {propertyInView?.checkedAmenities && propertyInView?.checkedAmenities.map(item => (
                                             <div className='flex'> <img src={CheckIcon} className="mr-2" /> <p>{item}</p></div>
                                         ))}
                                     </div>
                                 </div>
                                 <div className='w-[25%] border-r border-[#F29254] p-4 flex gap-2'>
-                                    <div className='h-fit flex'>
-                                        <img src={ProfileIcon} className="w-[20px]" />
-                                        <img src={ProfileIcon} className="w-[20px]" />
-                                    </div>
+                                <div className='h-fit flex'>
+                                    {Array.from({ length: totalResident }).map((_, index) => (
+                                        <img src={ProfileIcon} className="w-[20px]" key={index} />
+                                    ))}
+                                </div>
                                 </div>
                                 <div className='w-[25%] border-r border-[#F29254] p-4 flex gap-2'>
                                     <div className='h-fit flex'>
-                                        <p>N250,000</p>
+                                        <p>{formatMoney(propertyInView?.price * 1000 * parseInt(rooms) * dayDifference)}</p>
                                     </div>
                                 </div>
                                 <div className='w-[25%] p-4 flex gap-2'>
@@ -192,29 +229,29 @@ function Header() {
                             <h2 className='font-bold pb-4 border-b-2 border-[#858585]'>Summary</h2>
                             <div className='py-4 gap-4 flex flex-col'>
                                 <div className='w-full flex justify-between'>
-                                    <h2 className='font-bold'>Birdy Chip Apartments, `Garki</h2>
-                                    <h2 className='font-bold text-[#F29254]'>1 Room</h2>
+                                    <h2 className='font-bold'>{propertyInView?.title}, `Garki</h2>
+                                    <h2 className='font-bold text-[#F29254]'>{rooms} Room(s)</h2>
                                 </div>
                                 <div className='w-full flex justify-between'>
-                                    <p className=''>8/03/2024 - 17/03/2024</p>
-                                    <h2 className='font-bold text-[#F29254]'>N2,500,000.00</h2>
+                                    <p className=''>{formatDay(startDate)} - {formatDay(endDate)}</p>
+                                    <h2 className='font-bold text-[#F29254]'>{formatMoney(propertyInView?.price * 1000 * parseInt(rooms) * dayDifference)}</h2>
                                 </div>
                                 <div className='w-full flex justify-between'>
-                                    <p className=''>1 Adult</p>
-                                    <h2 className='font-bold text-[#F29254]'>N0.00</h2>
+                                    <p className=''>{bookingParam?.adults} Adult</p>
+                                    <h2 className='font-bold text-[#F29254]'>{formatMoney(0)}</h2>
                                 </div>
                                 <div className='w-full flex justify-between'>
                                     <p className=''>Airport Pick up & Drop off</p>
-                                    <h2 className='font-bold text-[#F29254]'>N30,000.00</h2>
+                                    <h2 className='font-bold text-[#F29254]'>{formatMoney(0)}</h2>
                                 </div>
                                 <div className='w-full flex justify-between'>
                                     <p className=''>Tour Guide</p>
-                                    <h2 className='font-bold text-[#F29254]'>N90,000.00</h2>
+                                    <h2 className='font-bold text-[#F29254]'>{formatMoney(0)}</h2>
                                 </div>
                             </div>
                             <div className='w-full flex justify-between pt-2 border-t-2 border-[#858585]'>
-                                <p className=''>Tour Guide</p>
-                                <h2 className='font-bold text-[#F29254]'>N90,000.00</h2>
+                                <p className=''>Total</p>
+                                <h2 className='font-bold text-[#F29254]'>{formatMoney(propertyInView?.price * 1000 * parseInt(rooms) * dayDifference)}</h2>
                             </div>
                         </div>
                     </div>
@@ -222,15 +259,19 @@ function Header() {
                         <h2 className='font-bold text-xl mb-4'>Rules and Policy</h2>
                         <div className='p-6 rounded-2xl bg-[#fff]'>
                             <ul className="list-decimal mt-4 space-y-4 ml-6">
-                                <li className="text-lg">Birdy Chip Apartments is a minimalistic luxurious apartment in the heart of Garki, Abuja. Birdy Chip Apartments is a minimalistic luxurious apartment in the heart of Garki, Abuja.</li>
-                                <li className="text-lg">Birdy Chip Apartments is a minimalistic luxurious apartment in the heart of Garki, Abuja. Birdy Chip Apartments is a minimalistic luxurious apartment in the heart of Garki, Abuja.</li>
-                                <li className="text-lg">Birdy Chip Apartments is a minimalistic luxurious apartment in the heart of Garki, Abuja.</li>
+                                <li className="text-lg">{propertyInView?.title} is a minimalistic luxurious apartment in the heart of Garki, Abuja. {propertyInView?.title} is a minimalistic luxurious apartment in the heart of Garki, Abuja.</li>
+                                <li className="text-lg">{propertyInView?.title} is a minimalistic luxurious apartment in the heart of Garki, Abuja. {propertyInView?.title} is a minimalistic luxurious apartment in the heart of Garki, Abuja.</li>
+                                <li className="text-lg">{propertyInView?.title} is a minimalistic luxurious apartment in the heart of Garki, Abuja.</li>
                                 <li className="text-lg">Cash is not accepted</li>
                             </ul>
                         </div>
                     </div>
                     <div className='flex w-full max-w-[250px] mt-10 m-auto'>
-                        <Button text={"Book"} />
+                        <Button
+                            loading={loading}
+                            text={"Book"}
+                            onClick={bookApartment}
+                        />
 
                     </div>
 

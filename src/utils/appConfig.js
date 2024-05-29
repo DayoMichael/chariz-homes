@@ -1,20 +1,20 @@
 import Cookies from "js-cookie";
 
 export const deleteToken = () => {
-    Cookies.remove("HorizonAdminToken");
-    Cookies.remove("HorizonAdminSessionInfo");
+    Cookies.remove("LacharizToken");
+    Cookies.remove("LacharizUserData");
 }
 
 export const getToken = () => {
-	let token = Cookies.get("HorizonAdminToken");
-	if (token && !isSessionActive()) {
-		return token
+	let token = Cookies.get("LacharizToken");
+	if (token) {
+		return JSON.parse(token)
 	}
 	return null;
 };
 
 export const getSessionInfo = () => {
-	let HorizonAdminSessionInfo = Cookies.get("HorizonAdminSessionInfo");
+	let HorizonAdminSessionInfo = Cookies.get("LacharizUserData");
 	if (HorizonAdminSessionInfo) {
 		const appData = JSON.parse(HorizonAdminSessionInfo);
 		return appData
@@ -23,7 +23,7 @@ export const getSessionInfo = () => {
 };
 
 export const isSessionActive = () => {
-	const expire = Cookies.get("HorizonAdminToken");
+	const expire = Cookies.get("LacharizToken");
 	if (!expire) {
 		return true;
 	} else {

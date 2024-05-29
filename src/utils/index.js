@@ -82,3 +82,34 @@ export const getHumanDate = (date) => {
     // Format the date
     return `${day} ${month}, ${year}. ${hours}:${minutes} ${period}`;
 }
+
+export function formatDay(date) {
+    const day = String(date?.getDate())?.padStart(2, '0');
+    const month = String(date?.getMonth() + 1)?.padStart(2, '0'); // Months are zero-based
+    const year = date?.getFullYear();
+
+    return `${day}/${month}/${year}`;
+}
+
+export function formatMoney(amount) {
+    return new Intl.NumberFormat('en-NG', {
+        style: 'currency',
+        currency: 'NGN',
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 2
+    }).format(amount);
+}
+
+export function getDayDifference(startDate, endDate) {
+    // Convert the input strings to Date objects
+    const start = new Date(startDate);
+    const end = new Date(endDate);
+    
+    // Calculate the difference in time
+    const timeDifference = end.getTime() - start.getTime();
+    
+    // Convert time difference from milliseconds to days
+    const dayDifference = timeDifference / (1000 * 3600 * 24);
+    
+    return dayDifference;
+}

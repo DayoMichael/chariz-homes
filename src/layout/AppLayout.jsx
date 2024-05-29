@@ -8,6 +8,7 @@ import ProfileIcon from "../assets/la-icons/big-profile-icon.svg";
 function AppLayout({ children }) {
     const navigate = useNavigate()
     const location = useLocation();
+
     const loggedIn = Cookies.get("LacharizToken")
     const navLinks = [
         { name: 'Home', link: '/' },
@@ -37,7 +38,7 @@ function AppLayout({ children }) {
                     <img src={CharizHomesLogo} />
                 </div>
                 <div className='w-5/7 gap-20 flex items-center justify-end'>
-                    <div className='hidden xl:flex gap-10'>
+                    <div className='hidden xl:flex gap-6'>
                         {nav.map((navItem, index) => (
                             <div
                                 key={index}

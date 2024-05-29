@@ -10,10 +10,19 @@ import GuestCountPicker from '../../library/GuestCountPicker/GuestCountPicker';
 import ApartmentIcon from '../../assets/la-icons/apartment-icon.svg'
 import Button from '../../library/Button/Button';
 import { useNavigate } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
 
 function PropertyDetails({ details, paramValue }) {
   const navigate = useNavigate()
+  const dispatch = useDispatch()
+  const { propertyInView } = useSelector(state => state.authState)
   const [selectedFeat, setSelectedFeat] = useState("Homes")
+  const [startDate, setStartDate] = useState(null);
+  const [endDate, setEndDate] = useState(null);
+  const [adults, setAdults] = useState(1);
+  const [children, setChildren] = useState(0);
+  const [rooms, setRooms] = useState(1);
+
   const features = [
     {
       id: "homes",
@@ -59,7 +68,18 @@ function PropertyDetails({ details, paramValue }) {
     { ReviewProfileImage: ReviewProfileImage, name: 'Jon Snow', StarRatings: 'star_ratings_url_4.jpg', description: 'This charming apartment offers a cozy feel with 3 bedrooms and This charming apartment offers a cozy feel with 3 bedrooms and' }
   ];
 
-  const goToBookingPage = () => navigate(`/book-stay?id=${paramValue}`)
+
+  const goToBookingPage = () => {
+    const payload = {
+      adults,
+      children,
+      rooms,
+      startDate,
+      endDate,
+    }
+    dispatch({type: "SET_BOOKING_PARAM", payload})
+    navigate(`/book-stay?id=${paramValue}`)
+  }
   return (
     <div className='bg-[#ECECEC]'>
       <div className='flex flex-col w-full max-w-[90%] m-auto py-20'>
@@ -155,11 +175,12 @@ function PropertyDetails({ details, paramValue }) {
               
             </div>
           </div>
-          <CheckInOutPicker className="min-w-[140px]" />
-          <GuestCountPicker className="min-w-[140px]" />
+          <CheckInOutPicker startDate={startDate} endDate={endDate} setStartDate={(date)=> setStartDate(date)} setEndDate={(date)=> setEndDate(date)} className="min-w-[140px]" />
+          <GuestCountPicker adults={adults} children={children} rooms={rooms} setAdults={(item) => setAdults(item)} setRooms={(item) => setRooms(item)} setChildren={(item) =>  setChildren(item)}className="min-w-[140px]" />
           <div className='w-[220px] min-w-[140px]'>
             <Button
-              text='Search'
+              disabled={!startDate || !endDate ||  !rooms }
+              text='Book'
               onClick={goToBookingPage}
             />
           </div>

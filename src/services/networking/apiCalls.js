@@ -17,6 +17,7 @@ export const postCall = async (url, data, params, headerConfig) => {
         },
         ...params,
     };
+    console.log(config)
     const response = await axiosInstance.post(url, finalData, config)
     return response
 };

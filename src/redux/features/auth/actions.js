@@ -36,7 +36,6 @@ export const createUserAccount = (requestData) => async (dispatch) => {
 		dispatch({ type: types.CUSTOMER_SIGNUP_STARTED });
 		const response = await postCall(createAccountUrl, requestData);
 		const { status, data } = response || {}
-		console.log(response)
 		const showFailureToast = true;
 		
         if(successConstruct.includes(status)){
@@ -65,7 +64,6 @@ export const activateUserAccount = (requestData) => async (dispatch) => {
 		dispatch({ type: types.CUSTOMER_ACTIVATION_STARTED });
 		const response = await postCall(activateAccountUrl, requestData);
 		const { status, data } = response || {}
-		console.log(response)
 		const showFailureToast = true;
         if(successConstruct.includes(status)){
 			dispatch({ type: types.CUSTOMER_ACTIVATION_SUCCESS, payload: data });
@@ -118,18 +116,45 @@ export const getPropertiesListing = () => async (dispatch) => {
 export const getPropertyDetails = (id) => async (dispatch) => {
 	const url = `${propertiesListingUrl}/${id}`
 	try {
-		dispatch({ type: types.FETCH_LISTINGS_STARTED });
+		dispatch({ type: types.FETCH_PROPERTY_DETAILS_STARTED });
 		const response = await getCall(url);
 		const { status, data } = response || {}
 		const showFailureToast = false;
-		if(status  === 200){
-            dispatch({ type: types.FETCH_LISTINGS_SUCCESS, payload: data?.listings});
-            return handleSuccess(data, "Listings fetched successfully", showFailureToast)
+		if(status === 200){
+            dispatch({ type: types.FETCH_PROPERTY_DETAILS_SUCCESS, payload: data});
+            return handleSuccess(data, "Listing fetched successfully", showFailureToast)
         }
         handleFailure(data?.message, showFailureToast);
 	} catch (error) {
 		const { data } = error?.response;
-		dispatch({ type: types.FETCH_LISTINGS_FAILED });
+		dispatch({ type: types.FETCH_PROPERTY_DETAILS_FAILED });
+		if (data?.data?.message) {
+			handleFailure(data?.data?.message, true);
+		} else {
+			genericFailure();
+		}
+
+		return {
+			status: false,
+			data: data,
+		};
+	}
+};
+
+export const apartmentBooking = (requestData) => async (dispatch) => {
+	try {
+		dispatch({ type: types.APARTMENT_BOOKING_STARTED });
+		const response = await postCall(`${propertiesListingUrl}/reserve-a-property`, requestData);
+		const { status, data } = response || {}
+		const showFailureToast = true;
+        if(successConstruct.includes(status)){
+			dispatch({ type: types.APARTMENT_BOOKING_SUCCESS, payload: data });
+			return handleSuccess(data, data?.message, showFailureToast)
+        }
+        return handleFailure(data?.message, showFailureToast);
+	} catch (error) {
+		const { data } = error.response;
+		dispatch({ type: types.APARTMENT_BOOKING_FAILED });
 		if (data?.data?.message) {
 			handleFailure(data?.data?.message, true);
 		} else {

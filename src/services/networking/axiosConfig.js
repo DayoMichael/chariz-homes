@@ -39,6 +39,13 @@ axiosInstance.interceptors.response.use(
 		}
 		if (error.response.status === 401) {
 			deleteToken();
+			return {
+				data: {
+					message: "Login to complete this process"
+				},
+				status: false,
+				message: "Login to complete this process"
+			}
 		} else {
 			return Promise.reject(error);
 		}

@@ -44,8 +44,6 @@ function DashboardView() {
     const navigate = useNavigate();
     let sliderRef = useRef(null);
 
-    console.log(sliderRef, "sliderRef")
-
     const next = () => {
         sliderRef.slickNext();
     };

@@ -40,7 +40,7 @@ function Signup() {
     setLoading(false)
     if(status){
       Cookies.set("LaCharizHomesActivationToken", JSON.stringify(data?.activation_token))
-      console.log(data)
+      
       goToNext()
     }
   }

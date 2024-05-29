@@ -4,7 +4,6 @@ import AuthenticatedHome from './authenticatedHome';
 import HomePage from './home';
 
 function HomeView() {
-   const loggedIn =  Cookies.get("LacharizToken");
   return (
     <>
       <AuthenticatedHome />

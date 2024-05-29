@@ -11,7 +11,7 @@ function Select({icon, text, selected, onClick}) {
                 <img src={icon}/>
             </div>
             
-            <p>{text}</p>
+            <p className='text-sm'>{text}</p>
         </div>
         <img src={selected ? SelectedIcon : UnSelectedIcon}/>
 

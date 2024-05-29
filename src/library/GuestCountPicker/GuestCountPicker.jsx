@@ -2,10 +2,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import { IoIosArrowDown, IoIosArrowUp } from 'react-icons/io';
 import ProfileIcon from "../../assets/la-icons/profile-icon.svg";
 
-function GuestCountPicker() {
-    const [adults, setAdults] = useState(1);
-    const [children, setChildren] = useState(0);
-    const [rooms, setRooms] = useState(1);
+function GuestCountPicker({adults, children, rooms, setAdults, setChildren, setRooms}) {
     const [isOpen, setIsOpen] = useState(false);
     const dropdownRef = useRef(null);
 

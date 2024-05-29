@@ -3,6 +3,8 @@ import * as types from "./types";
 const initialState = {
     loggedInUser : {},
     listings: [],
+    propertyInView: {},
+    bookingParam: {}
 }
 
 const AuthReducer = (state = initialState, {type, payload}) => {
@@ -17,7 +19,16 @@ const AuthReducer = (state = initialState, {type, payload}) => {
                 ...state,
                 listings: payload
             };
-
+        case types.FETCH_PROPERTY_DETAILS_SUCCESS:
+            return {
+                ...state,
+                propertyInView: payload
+            }
+        case types.SET_BOOKING_PARAM: 
+            return {
+                ...state,
+                bookingParam: payload
+            }
         default:
             return state;
     }
