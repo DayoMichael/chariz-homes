@@ -35,8 +35,22 @@ function HeroPage() {
 
     const goToBookingPage = () => navigate("/properties")
     return (
-        <div className='flex w-full h-screen  bg-heroImage bg-cover  flex-col px-10 '>
-            <div className='w-full flex flex-col items-center justify-center items-center gap-10 md:max-w-[1235px] m-auto'>
+        <div className='flex w-full h-screen bg-cover  flex-col  relative'>
+           <img 
+                src="https://res.cloudinary.com/dayomichael/image/upload/v1714809968/nick-wessaert-JI01fn0U7Cg-unsplash_2_pu53zr.png"
+                srcset="https://res.cloudinary.com/dayomichael/image/upload/c_scale,w_600/v1714809968/nick-wessaert-JI01fn0U7Cg-unsplash_2_pu53zr.png 600w,
+                        https://res.cloudinary.com/dayomichael/image/upload/c_scale,w_800/v1714809968/nick-wessaert-JI01fn0U7Cg-unsplash_2_pu53zr.png 800w,
+                        https://res.cloudinary.com/dayomichael/image/upload/c_scale,w_1200/v1714809968/nick-wessaert-JI01fn0U7Cg-unsplash_2_pu53zr.png 1200w"
+                sizes="(max-width: 600px) 600px,
+                    (max-width: 800px) 800px,
+                    1200px"
+                loading="lazy"
+                alt="Nick Wessaert Unsplash Image"
+                className="z-0 absolute w-100 h-full"
+            />
+
+
+            <div className='w-full flex flex-col items-center justify-center items-center gap-10 md:max-w-[1235px] m-auto absolute z-10 h-full right-0 left-0'>
                 <h4 className='text-5xl font-semibold max-w-[775px] text-center leading-tight mt-28'>
                     Your Home for Luxury Short Stays and More
                 </h4>

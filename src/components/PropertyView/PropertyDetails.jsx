@@ -89,7 +89,7 @@ function PropertyDetails({ details, paramValue }) {
         </div>
         <div className='w-full flex justify-between mt-4'>
           <p className='text-sm font-bold text-[#000] flex gap-2 justify-center items-center'><img src={LocationIcon} /> Nigeria<span className='text-[#F29254]'>Show on map</span> </p>
-          <button className='floating-button bg-[#F29254] px-10 py-2 rounded-3xl text-[#fff] text-center font-semibold flex text-xl font-bold'>Check Availability</button>
+          <button className='floating-button bg-[#F29254] px-10 py-2 rounded-3xl text-[#fff] text-center font-semibold flex text-xl font-bold min-w-[200px] text-center flex justify-center' onClick={goToBookingPage}>Book</button>
         </div>
 
         <div className="w-full overflow-x-auto mt-20">
@@ -114,7 +114,7 @@ function PropertyDetails({ details, paramValue }) {
               <p className='mb-2'>{details?.description} </p>
               <br />
             </div>
-            <button className=' floating-button bg-[#F29254] px-10 py-2 rounded-3xl text-[#fff] text-center font-semibold flex text-xl font-bold items-center cursor-pointer mt-6'>Check Availability</button>
+            <button className='floating-button bg-[#F29254] px-10 py-2 rounded-3xl text-[#fff] text-center font-semibold flex text-xl font-bold min-w-[200px] text-center flex justify-center' onClick={goToBookingPage}>Book</button>
           </div>
           <div className='w-1/5 h-full'>
             <div className='w-full rounded-2xl bg-[#fff] p-8 flex flex-col gap-4'>

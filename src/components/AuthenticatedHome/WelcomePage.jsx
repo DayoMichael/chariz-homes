@@ -59,10 +59,25 @@ function WelcomeSection() {
         <>
             <div className='flex flex-col w-full min-h-screen bg-[#ECECEC]'>
                 <div className='w-full h-full flex flex-col justify-center pb-20 max-w-[90%] m-auto gap-28'>
-                    <div className='w-full m-auto max-w-[1377px] bg-justForYou p-10 flex flex-col gap-4 bg-cover justify-center min-h-[263px] rounded-xl'>
-                        <p className='text-2xl font-bold text-[#fff] text-center'>Just for you</p>
-                        <p className='text-xl text-[#fff] text-center max-w-[900px] m-auto'>Planning a trip somewhere? Whether it’s personal, family, leisure or corporate; Grab exclusive travel offers tailored to your specific needs with Chariz Travels</p>
-                        <button className='floating-button bg-[#F29254] px-16 py-2 rounded-3xl text-[#fff] text-center font-semibold flex text-md font-bold items-center cursor-pointer w-fit m-auto'>Find Travel Deals</button>
+                    <div className='relative'>
+                        <img
+                            src="https://res.cloudinary.com/dayomichael/image/upload/v1715935819/just-for-you-image_iquh7d.svg"
+                            srcset="https://res.cloudinary.com/dayomichael/image/upload/c_scale,w_600/v1715935819/just-for-you-image_iquh7d.svg 600w,
+                                    https://res.cloudinary.com/dayomichael/image/upload/c_scale,w_800/v1715935819/just-for-you-image_iquh7d.svg 800w,
+                                    https://res.cloudinary.com/dayomichael/image/upload/c_scale,w_1200/v1715935819/just-for-you-image_iquh7d.svg 1200w"
+                            sizes="(max-width: 600px) 600px,
+                                    (max-width: 800px) 800px,
+                                    1200px"
+                            loading="lazy"
+                            alt="Just For You Image"
+                            className="z-0 absolute w-100 h-full right-0 left-0 w-full"
+                        />
+
+                        <div className="w-full m-auto max-w-[1377px] p-10 flex flex-col gap-4 bg-cover justify-center min-h-[263px] rounded-xl relative">
+                            <p className='text-2xl font-bold text-[#fff] text-center'>Just for you</p>
+                            <p className='text-xl text-[#fff] text-center max-w-[900px] m-auto'>Planning a trip somewhere? Whether it’s personal, family, leisure or corporate; Grab exclusive travel offers tailored to your specific needs with Chariz Travels</p>
+                            <button className='floating-button bg-[#F29254] px-16 py-2 rounded-3xl text-[#fff] text-center font-semibold flex text-md font-bold items-center cursor-pointer w-fit m-auto'>Find Travel Deals</button>
+                        </div>
                     </div>
                     <div className='flex flex-col w-full max-w-[1377px] m-auto gap-10'>
                         <h2 className='text-2xl md:text-3xl text-[#F29254] font-bold text-center'>Browse by property type</h2>
@@ -141,7 +156,7 @@ function WelcomeSection() {
                     </div>
                 </div>
             </div>
-            
+
         </>
     )
 }
